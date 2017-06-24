@@ -73,6 +73,7 @@ class get2db(object):
                     if count==6:
                         if '消息对象' in line:
                             print(line)
+                            self.girl_name=line[9:]
                         else:
                             error_tag+=1
             if error_tag>0:

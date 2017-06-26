@@ -27,7 +27,16 @@ code is far away from bugs with the god Animal protecting
 error definition
 
 '''
-
-class LoveError(object):
+# 父类继承以及使用并未真正掌握
+class LoveError(Exception):
     def __init__(self, error, data='', msg=''):
-        self.data=''
+        # Exception 继承后我发现 这个msg 才不会被pycharm 标黄
+        super(LoveError,self).__init__(msg)
+        self.data=error
+        self.error=data
+        self.msg=msg
+
+class ValueError(LoveError):
+    def __init__(self, field, msg):
+        super(ValueError,self).__init__('program can not run as there is value error', field, msg)
+

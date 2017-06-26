@@ -25,8 +25,7 @@ code is far away from bugs with the god Animal protecting
 """
 from colorama import init, Fore, Back, Style
 import re
-# 之所以用mysql 是因为免费 而且我这边有可视化工具方便
-import pymysql
+# 改为sqllite3
 import logging
 logging.basicConfig(level=logging.INFO)
 class get2db(object):
@@ -38,12 +37,21 @@ class get2db(object):
         return
     def connect_db(self):
         # 没发现这个用dict 可以传递现在用函数传递游标也行吧
-        db = pymysql.connect("localhost", "root", "070801382", "msg", port=3308, charset='utf8')
-        return db
+        import sqlite3
+        conn = sqlite3.connect('store.db')
+        conn.execute('''
+        CREATE TABLE IF NOT EXISTS "msg" (
+        "id"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        "qq_msg"  TEXT,
+        "qq_user"  TEXT,
+        "qq_time"  INTEGER
+        );
+        ''')
+        return conn
     def get_path(self):
         import os
         current_path = os.path.abspath(os.path.join(os.path.dirname('get2db.py'), os.path.pardir))
-        new_path = current_path + 'CheckLoyal'+'\\' + 'msg'+'\\'
+        new_path = current_path + 'lovetime'+'\\' + 'msg'+'\\'
         FileList = []
         rootdir = new_path
         for root, subFolders, files in os.walk(rootdir):
@@ -128,14 +136,15 @@ class get2db(object):
     def insert_db(self,data):
         db = get2db().connect_db()
         cursor = db.cursor()
-        insert_sql="INSERT INTO id(qq_time,qq_msg,qq_user) VALUES (%s, %s, %s)"
-        select_sql="SELECT * FROM id"
+        insert_sql="INSERT INTO msg(qq_time,qq_msg,qq_user) VALUES (?, ?, ?)"
+        select_sql="SELECT * FROM msg"
         cursor.execute(select_sql)
         check_result=cursor.fetchall()
         # 如果数据库为空才导入，不为空则不导入
         if check_result:
             print(Fore.YELLOW + '数据库中已经存在了需要检测的聊天记录,本次不会导入！')
         else:
+            print(Fore.GREEN + '正在导入你的聊天数据，请稍后.....')
             cursor.executemany(insert_sql, data)
         db.commit()
 

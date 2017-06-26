@@ -85,7 +85,7 @@ class moniter_platform(object):
         if not self.db_result:
             db=get2db().connect_db()
             cursor = db.cursor()
-            all_sql='select * from id'
+            all_sql='select * from msg'
             cursor.execute(all_sql)
             check_result = cursor.fetchall()
             self.db_result=check_result
@@ -105,7 +105,8 @@ class moniter_platform(object):
                 else:
                     tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
                     header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
-                    if i[3] <= header_time and i[3] >= tail_time:
+                    compare_time=datetime.datetime.strptime(i[3],'%Y-%m-%d %H:%M:%S')
+                    if compare_time <= header_time and compare_time >= tail_time:
                          back_result.append(i[num])
         # print(back_result)
         return back_result
@@ -158,10 +159,16 @@ class moniter_platform(object):
                 filter_name=str(reply_data[i+1][0]).replace('系统消息','').replace('用户名未查询到','')
                 if filter_name not in self.history_name and filter_name !='':
                     self.history_name.append(str(reply_data[i+1][0]))
-                first_gap_time=reply_data[i+1][1] - reply_data[i][1]
+                # 由于改用sqllite 导致这里时间格式需要再脚本计算修改
+                gap2_time=datetime.datetime.strptime(reply_data[i+1][1],'%Y-%m-%d %H:%M:%S')
+                gap1_time=datetime.datetime.strptime(reply_data[i][1],'%Y-%m-%d %H:%M:%S')
+                first_gap_time=gap2_time - gap1_time
                 first_gap_list.append(first_gap_time)
             elif first_strike_up==str(reply_data[i+1][0]):
-                sec_gap_time=reply_data[i+1][1]-reply_data[i][1]
+                gap2_time=datetime.datetime.strptime(reply_data[i+1][1],'%Y-%m-%d %H:%M:%S')
+                gap1_time=datetime.datetime.strptime(reply_data[i][1],'%Y-%m-%d %H:%M:%S')
+                sec_gap_time= gap2_time - gap1_time
+
                 sec_gap_list.append(sec_gap_time)
         # 这个数据格式还是满奇特的
         first_sum_time=datetime.timedelta(0, 0)
@@ -201,7 +208,6 @@ class moniter_platform(object):
 
         log('your time_gap %s'%self.time_gap)
         return self.time_gap
-
 
 
 

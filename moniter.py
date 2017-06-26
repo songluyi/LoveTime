@@ -172,16 +172,17 @@ class moniter_platform(object):
             sec_sum_time=sec_sum_time+j
         first_avg_time=first_sum_time/len(first_gap_list)
         sec_avg_time=sec_sum_time/len(sec_gap_list)
-        print(self.history_name)
-        print(Fore.GREEN+'平均回复'+'【'+self.first_strike_up+ '】'+'的时间是：'+str(first_avg_time))
-        print(Fore.GREEN+'平均回复'+'【'+self.sec_strike_up+ '】'+'的时间是：'+str(sec_avg_time))
+
         if int(interval_time[1][:4])-int(interval_time[0][:4])==1:
             time_axis=interval_time[0][:4]+'下半年'
         elif int(interval_time[1][:4])-int(interval_time[0][:4])==0:
             time_axis=interval_time[0][:4]+'上半年'
         else:
-
             time_axis='Wrong'
+        print(self.history_name)
+        print(time_axis)
+        print(Fore.GREEN + '平均回复' + '【' + self.first_strike_up + '】' + '的时间是：' + str(first_avg_time))
+        print(Fore.GREEN + '平均回复' + '【' + self.sec_strike_up + '】' + '的时间是：' + str(sec_avg_time))
         return [time_axis, first_strike_up, sec_avg_time]
     def get_time_gap(self):
         if not self.chat_his:
@@ -205,20 +206,13 @@ class moniter_platform(object):
 
 
 
-
+# 这些复杂的函数 到时还是写一个unittest
 moniter=moniter_platform()
-
-# day_index,hour_index=moniter.visual_time()
-#
-# s=moniter.turn_tuplelist(moniter.get_field(2),moniter.get_field())
-# # print(s)
-# moniter.reply_rate()
-# moniter.get_field(1,['2015-01-01','2015-06-01'])
 count=0
 moniter.get_time_gap()
-print(moniter.time_gap)
-for gap in moniter.time_gap[:-2]:
-    print(moniter.time_gap[count + 1])
-    count+=1
+print(moniter.time_gap[:-1])
+for gap in moniter.time_gap[:-1]:
+    # print(moniter.time_gap[count + 1])
     small_gap=[moniter.time_gap[count], moniter.time_gap[count+1]]
     moniter.reply_rate(small_gap)
+    count += 1

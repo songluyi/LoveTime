@@ -2,7 +2,7 @@
 # 2017/6/14 21:50
 """
 -------------------------------------------------------------------------------
-Function:   在这里监控 数据
+Function:   monitor data in this place
 Version:    1.0
 Author:     SLY
 Contact:    slysly759@gmail.com 
@@ -26,6 +26,10 @@ code is far away from bugs with the god Animal protecting
 # 引入数据库游标函数
 from colorama import init, Fore, Back, Style
 import datetime
+import logging
+logging.basicConfig(level=logging.INFO)
+def log(msg):
+    logging.info(str(msg))
 from get2db import get2db
 class moniter_platform(object):
     def __init__(self):
@@ -34,6 +38,8 @@ class moniter_platform(object):
         self.sec_strike_up=''
         self.history_name=[]
         self.chat_his=[]# 聊天历史年份
+        self.year_time=2# 默认时长两年
+        self.time_gap=[]
 
 
     def visual_time(self):
@@ -73,7 +79,7 @@ class moniter_platform(object):
             new_dict.append((dic1[i],dic2[i]))
         return new_dict
     # 获取数据库中字段，默认为获取时间
-    def get_field(self, num=3):
+    def get_field(self, num=3, time_limit=None):
         back_result = []
         # 如果db_result为空 就到数据区中取值 否则就用平时已经存储过的值
         if not self.db_result:
@@ -84,11 +90,24 @@ class moniter_platform(object):
             check_result = cursor.fetchall()
             self.db_result=check_result
 
-            for i in check_result:
-                back_result.append(i[num])
+            for i in self.db_result:
+                if not time_limit:
+                    back_result.append(i[num])
+                else:
+                    tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
+                    header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
+                    if i[3] <= header_time and i[3] >= tail_time:
+                         back_result.append(i[num])
         else:
             for i in self.db_result:
-                back_result.append(i[num])
+                if not time_limit:
+                    back_result.append(i[num])
+                else:
+                    tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
+                    header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
+                    if i[3] <= header_time and i[3] >= tail_time:
+                         back_result.append(i[num])
+        # print(back_result)
         return back_result
 
     # 获取聊天的年份 方便对回复速率进行年份间的评估
@@ -106,18 +125,27 @@ class moniter_platform(object):
                 header_flag=True
             if str(i)[0:4] not in chat_his:
                 chat_his.append(str(i)[0:4])
+        # 第一个布尔类型表示最开始年份是否有半年之久
+        # 第二个布尔类型表示后续年份超过六个月
         chat_his.append(tail_flag)
         chat_his.append(header_flag)
-        print(chat_his)
-        return
+        self.chat_his=chat_his
+        log(chat_his)
+        return chat_his
+
+    def get_first_strike(self):
+        reply_data = self.turn_tuplelist(self.get_field(2), self.get_field(3))
+        self.first_strike_up = reply_data[0][0]
+        return self.first_strike_up
 
 
-    def reply_rate(self):
-        reply_data=self.turn_tuplelist(self.get_field(2),self.get_field())
+    def reply_rate(self,interval_time=None):
+        reply_data=self.turn_tuplelist(self.get_field(2,interval_time),self.get_field(3,interval_time))
         # 第一次打招呼的人
-        print(reply_data)
-        first_strike_up=reply_data[0][0]
-        self.first_strike_up=first_strike_up
+        # print(reply_data)
+        # first_strike_up=reply_data[0][0]
+        # self.first_strike_up=first_strike_up
+        first_strike_up=self.get_first_strike()
         first_gap_list=[]
         sec_gap_list=[]
 
@@ -126,6 +154,7 @@ class moniter_platform(object):
             if first_strike_up != str(reply_data[i+1][0]) :
                 self.sec_strike_up=str(reply_data[i+1][0])
                 # 对 研究记录对象的 曾用名 进行统计
+                # print(first_strike_up)
                 filter_name=str(reply_data[i+1][0]).replace('系统消息','').replace('用户名未查询到','')
                 if filter_name not in self.history_name and filter_name !='':
                     self.history_name.append(str(reply_data[i+1][0]))
@@ -144,9 +173,39 @@ class moniter_platform(object):
         first_avg_time=first_sum_time/len(first_gap_list)
         sec_avg_time=sec_sum_time/len(sec_gap_list)
         print(self.history_name)
-        print(Fore.GREEN+'平均回复'+'【'+first_strike_up+ '】'+'的时间是：'+str(first_avg_time))
+        print(Fore.GREEN+'平均回复'+'【'+self.first_strike_up+ '】'+'的时间是：'+str(first_avg_time))
         print(Fore.GREEN+'平均回复'+'【'+self.sec_strike_up+ '】'+'的时间是：'+str(sec_avg_time))
-        return
+        if int(interval_time[1][:4])-int(interval_time[0][:4])==1:
+            time_axis=interval_time[0][:4]+'下半年'
+        elif int(interval_time[1][:4])-int(interval_time[0][:4])==0:
+            time_axis=interval_time[0][:4]+'上半年'
+        else:
+
+            time_axis='Wrong'
+        return [time_axis, first_strike_up, sec_avg_time]
+    def get_time_gap(self):
+        if not self.chat_his:
+            self.get_chat_his()
+        self.year_time=len(self.chat_his[:-2])
+
+        for year in self.chat_his[:-2]:
+            self.time_gap.append(str(year)+'-01-01')
+            self.time_gap.append(str(year)+'-06-01')
+        # 若存在最初日期大于六月份
+        log(self.chat_his)
+        if not self.chat_his[-2]:
+            self.time_gap=self.time_gap[1:]
+        if not self.chat_his[-1]:
+            self.time_gap=self.time_gap[:-1]
+
+        log('your time_gap %s'%self.time_gap)
+        return self.time_gap
+
+
+
+
+
+
 moniter=moniter_platform()
 
 # day_index,hour_index=moniter.visual_time()
@@ -154,5 +213,12 @@ moniter=moniter_platform()
 # s=moniter.turn_tuplelist(moniter.get_field(2),moniter.get_field())
 # # print(s)
 # moniter.reply_rate()
-
-moniter.get_chat_his()
+# moniter.get_field(1,['2015-01-01','2015-06-01'])
+count=0
+moniter.get_time_gap()
+print(moniter.time_gap)
+for gap in moniter.time_gap[:-2]:
+    print(moniter.time_gap[count + 1])
+    count+=1
+    small_gap=[moniter.time_gap[count], moniter.time_gap[count+1]]
+    moniter.reply_rate(small_gap)

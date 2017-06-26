@@ -27,6 +27,8 @@ from colorama import init, Fore, Back, Style
 import re
 # 之所以用mysql 是因为免费 而且我这边有可视化工具方便
 import pymysql
+import logging
+logging.basicConfig(level=logging.INFO)
 class get2db(object):
     # 调用一次 传递一个游标
     def __init__(self):
@@ -136,6 +138,7 @@ class get2db(object):
         else:
             cursor.executemany(insert_sql, data)
         db.commit()
+
 
 
 if __name__=="__main__":

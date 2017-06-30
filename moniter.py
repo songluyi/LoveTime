@@ -32,15 +32,24 @@ def log(msg):
     logging.info(str(msg))
 from get2db import get2db
 class moniter_platform(object):
+
     def __init__(self):
-        self.db_result=[]
+        self.db_result=self.get_db_reslt()
         self.first_strike_up=''
         self.sec_strike_up=''
         self.history_name=[]
         self.chat_his=[]# 聊天历史年份
         self.year_time=2# 默认时长两年
         self.time_gap=[]
+        self.sql='select * from msg'
 
+    def get_db_reslt(self):
+        sql='select * from msg'
+        db=get2db().connect_db()
+        cursor = db.cursor()
+        cursor.execute(sql)
+        check_result = cursor.fetchall()
+        return check_result
 
     def visual_time(self):
         check_result=self.get_field()
@@ -79,35 +88,49 @@ class moniter_platform(object):
             new_dict.append((dic1[i],dic2[i]))
         return new_dict
     # 获取数据库中字段，默认为获取时间
-    def get_field(self, num=3, time_limit=None):
+
+    def get_field(self, num=3, time_limit=None, *condition):
         back_result = []
-        # 如果db_result为空 就到数据区中取值 否则就用平时已经存储过的值
-        if not self.db_result:
+        sql_condition=condition
+        # 存在condition where 语句 就重新执行sql 否则就用统一的
+        if sql_condition:
+            sql_plus='where'+sql_condition[0]+'='+sql_condition[1]
+            all_sql = self.sql + sql_plus
             db=get2db().connect_db()
             cursor = db.cursor()
-            all_sql='select * from msg'
             cursor.execute(all_sql)
             check_result = cursor.fetchall()
-            self.db_result=check_result
-
-            for i in self.db_result:
-                if not time_limit:
-                    back_result.append(i[num])
-                else:
-                    tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
-                    header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
-                    if i[3] <= header_time and i[3] >= tail_time:
-                         back_result.append(i[num])
         else:
-            for i in self.db_result:
-                if not time_limit:
-                    back_result.append(i[num])
-                else:
-                    tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
-                    header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
-                    compare_time=datetime.datetime.strptime(i[3],'%Y-%m-%d %H:%M:%S')
-                    if compare_time <= header_time and compare_time >= tail_time:
-                         back_result.append(i[num])
+            sql_plus=''
+            check_result=self.db_result
+
+        # 如果db_result为空 就到数据区中取值 否则就用平时已经存储过的值
+        # if not self.db_result:
+        # db=get2db().connect_db()
+        # cursor = db.cursor()
+        # # all_sql='select * from msg'
+        # cursor.execute(all_sql)
+        # check_result = cursor.fetchall()
+
+        for i in check_result:
+            if not time_limit:
+                back_result.append(i[num])
+            else:
+                tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
+                header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
+                compare_time=datetime.datetime.strptime(i[3],'%Y-%m-%d %H:%M:%S')
+                if compare_time <= header_time and compare_time >= tail_time:
+                     back_result.append(i[num])
+        # else:
+        #     for i in self.db_result:
+        #         if not time_limit:
+        #             back_result.append(i[num])
+        #         else:
+        #             tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
+        #             header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
+        #             compare_time=datetime.datetime.strptime(i[3],'%Y-%m-%d %H:%M:%S')
+        #             if compare_time <= header_time and compare_time >= tail_time:
+        #                  back_result.append(i[num])
         # print(back_result)
         return back_result
 

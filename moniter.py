@@ -25,6 +25,7 @@ code is far away from bugs with the god Animal protecting
 """
 # 引入数据库游标函数
 from colorama import init, Fore, Back, Style
+from collections import Counter
 import datetime
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -88,16 +89,17 @@ class moniter_platform(object):
             new_dict.append((dic1[i],dic2[i]))
         return new_dict
     # 获取数据库中字段，默认为获取时间
-
+    # 仅接受 一个condition
     def get_field(self, num=3, time_limit=None, *condition):
         back_result = []
         sql_condition=condition
         # 存在condition where 语句 就重新执行sql 否则就用统一的
         if sql_condition:
-            sql_plus='where'+sql_condition[0]+'='+sql_condition[1]
+            sql_plus=' where '+str(sql_condition[0])+'='+"'"+str(sql_condition[1])+"'"
             all_sql = self.sql + sql_plus
             db=get2db().connect_db()
             cursor = db.cursor()
+            log(all_sql)
             cursor.execute(all_sql)
             check_result = cursor.fetchall()
         else:
@@ -231,7 +233,25 @@ class moniter_platform(object):
 
         log('your time_gap %s'%self.time_gap)
         return self.time_gap
-
+    def get_reply_fluency(self,time_gap):
+        appear_name_list=self.get_field(2,time_gap)
+        fluency_table=Counter(appear_name_list)
+        first_frequency=fluency_table[self.first_strike_up]/len(appear_name_list)
+        sec_frequency=1-first_frequency
+        first_ratio_reply=first_frequency/sec_frequency
+        sec_ratio_reply=sec_frequency/first_frequency
+        print(self.first_strike_up+"回复频率为 1: "+"%.2f" %first_ratio_reply)
+        print(self.sec_strike_up + "回复频率为 1: " + "%.2f" % sec_ratio_reply)
+        return (first_frequency, 1-first_frequency)
+    def get_content_ratio(self,time_gap):
+        first_content_list=''.join(self.get_field(1,time_gap,'qq_user',self.first_strike_up))
+        first_content_length=len(first_content_list)
+        sec_content_list=''.join(self.get_field(1,time_gap,'qq_user',self.sec_strike_up))
+        sec_content_length=len(sec_content_list)
+        first_ratio_content=first_content_length/sec_content_length
+        sec_ratio_content=sec_content_length/first_content_length
+        print(self.first_strike_up+"内容回复比率为 1: "+"%.2f" %first_ratio_content)
+        print(self.sec_strike_up + "内容回复比率为 1: " + "%.2f" % sec_ratio_content)
 
 
 
@@ -244,4 +264,8 @@ for gap in moniter.time_gap[:-1]:
     # print(moniter.time_gap[count + 1])
     small_gap=[moniter.time_gap[count], moniter.time_gap[count+1]]
     moniter.reply_rate(small_gap)
+    moniter.get_reply_fluency(small_gap)
+    moniter.get_content_ratio(small_gap)
     count += 1
+# s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
+# print(s)

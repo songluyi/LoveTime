@@ -24,9 +24,16 @@ code is far away from bugs with the god Animal protecting
 -------------------------------------------------------------------------------
 """
 # 引入数据库游标函数
+'''
+这两兆的文件处理起来太慢了，每次都是从新使用游标读取 在效率上应该可以优化
+这方面需要加强
+'''
 from colorama import init, Fore, Back, Style
 from collections import Counter
 import datetime
+from jieba import analyse
+# 效率的事情稍 后来转么进行实现 特别是规范化的问题
+import jieba
 import logging
 logging.basicConfig(level=logging.INFO)
 def log(msg):
@@ -43,6 +50,7 @@ class moniter_platform(object):
         self.year_time=2# 默认时长两年
         self.time_gap=[]
         self.sql='select * from msg'
+        self.count_word={}
 
     def get_db_reslt(self):
         sql='select * from msg'
@@ -72,8 +80,8 @@ class moniter_platform(object):
                 hour_result[index_hour]=middle_hour
             else:
                 hour_result[index_hour]=1
-        day_list=sorted(moniter_platform().dict2list(index_result), key=lambda x:x[1], reverse=True)
-        hour_list=sorted(moniter_platform().dict2list(hour_result), key=lambda x:x[1], reverse=True)
+        day_list=sorted(self.dict2list(index_result), key=lambda x:x[1], reverse=True)
+        hour_list=sorted(self.dict2list(hour_result), key=lambda x:x[1], reverse=True)
 
         return [day_list,hour_list]
 
@@ -212,7 +220,6 @@ class moniter_platform(object):
         else:
             time_axis='Wrong'
         print(self.history_name)
-        print(time_axis)
         print(Fore.GREEN + '平均回复' + '【' + self.first_strike_up + '】' + '的时间是：' + str(first_avg_time))
         print(Fore.GREEN + '平均回复' + '【' + self.sec_strike_up + '】' + '的时间是：' + str(sec_avg_time))
         return [time_axis, first_strike_up, sec_avg_time]
@@ -233,7 +240,7 @@ class moniter_platform(object):
 
         log('your time_gap %s'%self.time_gap)
         return self.time_gap
-    def get_reply_fluency(self,time_gap):
+    def get_reply_fluency(self,time_gap=None):
         appear_name_list=self.get_field(2,time_gap)
         fluency_table=Counter(appear_name_list)
         first_frequency=fluency_table[self.first_strike_up]/len(appear_name_list)
@@ -243,7 +250,7 @@ class moniter_platform(object):
         print(self.first_strike_up+"回复频率为 1: "+"%.2f" %first_ratio_reply)
         print(self.sec_strike_up + "回复频率为 1: " + "%.2f" % sec_ratio_reply)
         return (first_frequency, 1-first_frequency)
-    def get_content_ratio(self,time_gap):
+    def get_content_ratio(self,time_gap=None):
         first_content_list=''.join(self.get_field(1,time_gap,'qq_user',self.first_strike_up))
         first_content_length=len(first_content_list)
         sec_content_list=''.join(self.get_field(1,time_gap,'qq_user',self.sec_strike_up))
@@ -253,6 +260,29 @@ class moniter_platform(object):
         print(self.first_strike_up+"内容回复比率为 1: "+"%.2f" %first_ratio_content)
         print(self.sec_strike_up + "内容回复比率为 1: " + "%.2f" % sec_ratio_content)
 
+    def jieba_count_word(self, time_gap=None):
+        jieba.set_dictionary('foobar.txt')
+        # 有些聊天词语 字典加了也不给划分 因此我在这里强制一下
+        jieba.suggest_freq(('会从','[表情]'))
+        msg_list=self.get_field(1, time_gap)
+        count_gap_word={}
+        for single_msg in msg_list:
+            cut_sentence=jieba.cut(single_msg)
+            for word in cut_sentence:
+                if not count_gap_word.get(word,None):
+                    count_gap_word.setdefault(word,1)
+                if not self.count_word.get(word,None):
+                    self.count_word.setdefault(word,1)
+                else:
+                    plus_one=count_gap_word[word]+1
+                    fuck_one=self.count_word[word]+1
+                    count_gap_word[word]=plus_one
+                    self.count_word[word]=fuck_one
+
+            # print(count_gap_word)
+        jieba_count=sorted(self.dict2list(count_gap_word),key=lambda x:x[1],reverse=True)
+        # print(jieba_count)
+        return jieba_count
 
 
 # 这些复杂的函数 到时还是写一个unittest
@@ -261,11 +291,17 @@ count=0
 moniter.get_time_gap()
 print(moniter.time_gap[:-1])
 for gap in moniter.time_gap[:-1]:
-    # print(moniter.time_gap[count + 1])
+    print(moniter.time_gap[count + 1])
     small_gap=[moniter.time_gap[count], moniter.time_gap[count+1]]
     moniter.reply_rate(small_gap)
     moniter.get_reply_fluency(small_gap)
     moniter.get_content_ratio(small_gap)
+    moniter.jieba_count_word(small_gap)
     count += 1
+print(sorted(moniter.dict2list(moniter.count_word),key=lambda x:x[1],reverse=True))
+file_path=get2db().get_path()
+content = ''.join(moniter.get_field(1))
+tags = jieba.analyse.extract_tags(content,40)
+print(",".join(tags))
 # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
 # print(s)

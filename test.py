@@ -88,16 +88,9 @@ code is far away from bugs with the god Animal protecting
 #
 # plt.show()
 
+# import jieba
+# # jieba.suggest_freq('会从', True)
+# jieba.set_dictionary("foobar.txt")
+# seg_list = jieba.cut("【首届中国青年APP大赛报名】各位大大好，由共青团江西省委举办的首届中国青年APP大赛江西分赛报名开始（相关文件见群共享），报名及初赛时间为3-4月，如有意愿参赛的同学，请各班级汇总报名信息（可先不提交作品），并于3月24日晚20:00前将报名汇总表反馈至294259899@qq.com。")
+# print("Full Mode: " + "/ ".join(seg_list))  # 全模式
 
-import sqlite3
-conn = sqlite3.connect('test.db')
-conn.execute('''
-CREATE TABLE IF NOT EXISTS "msg" (
-"qq_user"  TEXT,
-"id"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-"qq_msg"  TEXT,
-"qq_time"  INTEGER
-);
-''')
-print("Table created successfully")
-conn.close()

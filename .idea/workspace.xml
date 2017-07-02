@@ -5,8 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d296589-6dca-46c3-9bad-963932119495" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/foobar.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/__main__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/_compat.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/analyzer.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/idf.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/textrank.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/tfidf.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/dict.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_emit.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_emit.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_start.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_start.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_trans.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_trans.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/char_state_tab.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/char_state_tab.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_emit.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_emit.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_start.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_start.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_trans.p" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_trans.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/viterbi.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moniter.py" afterPath="$PROJECT_DIR$/moniter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +47,8 @@
     <SUITE FILE_PATH="coverage/lovetime$get2db.coverage" NAME="get2db Coverage Results" MODIFIED="1498480122977" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CheckLoyal$get2db.coverage" NAME="get2db Coverage Results" MODIFIED="1497689130508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CheckLoyal$moniter.coverage" NAME="moniter Coverage Results" MODIFIED="1497780058992" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lovetime$moniter.coverage" NAME="moniter Coverage Results" MODIFIED="1498812152559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/lovetime$test.coverage" NAME="test Coverage Results" MODIFIED="1498477321903" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lovetime$moniter.coverage" NAME="moniter Coverage Results" MODIFIED="1498919668659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lovetime$test.coverage" NAME="test Coverage Results" MODIFIED="1498880285908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,8 +59,8 @@
       <file leaf-file-name="get2db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/get2db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+            <state relative-caret-position="1235">
+              <caret line="68" column="23" lean-forward="false" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
               <folding>
                 <element signature="e#711#755#0" expanded="true" />
                 <marker date="1498480081981" expanded="true" signature="1188:1366" ph="CREATE TABLE... msg" />
@@ -47,13 +75,35 @@
       <file leaf-file-name="moniter.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/moniter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3762">
-              <caret line="47" column="31" lean-forward="true" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+            <state relative-caret-position="571">
+              <caret line="304" column="21" lean-forward="true" selection-start-line="304" selection-start-column="21" selection-end-line="304" selection-end-column="21" />
               <folding>
-                <element signature="e#727#771#0" expanded="true" />
-                <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-                <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+                <element signature="e#781#825#0" expanded="true" />
+                <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+                <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jieba/analyse/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tfidf.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jieba/analyse/tfidf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="75" column="11" lean-forward="true" selection-start-line="75" selection-start-column="11" selection-end-line="75" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,8 +111,8 @@
       <file leaf-file-name="errors.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/errors.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+            <state relative-caret-position="319">
+              <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -71,11 +121,29 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1900">
-              <caret line="100" column="4" lean-forward="false" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
-              <folding>
-                <marker date="1498477321846" expanded="true" signature="2099:2237" ph="CREATE TABLE... msg" />
-              </folding>
+            <state relative-caret-position="382">
+              <caret line="94" column="51" lean-forward="false" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="foobar.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/foobar.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jieba/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8284">
+              <caret line="436" column="36" lean-forward="false" selection-start-line="436" selection-start-column="36" selection-end-line="436" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,8 +152,8 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="76">
-                <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+              <first_editor relative-caret-position="171">
+                <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -109,10 +177,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/errors.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/get2db.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/foobar.txt" />
+        <option value="$PROJECT_DIR$/jieba/analyse/__init__.py" />
         <option value="$PROJECT_DIR$/moniter.py" />
       </list>
     </option>
@@ -124,7 +194,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1366" />
+    <option name="width" value="1364" />
     <option name="height" value="728" />
   </component>
   <component name="ProjectView">
@@ -142,7 +212,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -155,18 +224,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovetime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lovetime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jieba" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Python_Profession/Get_My_Proxy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="SearchEverywhereHistoryKey" value="extract_tags&#9;null&#9;null&#10;suggest_freq&#9;null&#9;null" />
   </component>
   <component name="RunManager" selected="Python.moniter">
     <configuration default="false" name="get2db" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -445,8 +530,8 @@
     <recent_temporary>
       <list size="3">
         <item index="0" class="java.lang.String" itemvalue="Python.moniter" />
-        <item index="1" class="java.lang.String" itemvalue="Python.get2db" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.get2db" />
       </list>
     </recent_temporary>
   </component>
@@ -467,27 +552,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1364" height="728" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2525926" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25296736" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2197092" sideWeight="0.50296295" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24433658" sideWeight="0.49703702" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32038835" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27022654" sideWeight="0.49703702" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32038835" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,6 +595,41 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1748">
+          <caret line="92" column="36" lean-forward="false" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/foobar.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jieba/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8170">
+          <caret line="430" column="11" lean-forward="false" selection-start-line="430" selection-start-column="11" selection-end-line="430" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="171">
+            <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/get2db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="741">
@@ -529,9 +649,78 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/errors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1748">
+          <caret line="92" column="36" lean-forward="true" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/foobar.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jieba/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8170">
+          <caret line="430" column="11" lean-forward="true" selection-start-line="430" selection-start-column="11" selection-end-line="430" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="171">
+            <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/get2db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+          <folding>
+            <element signature="e#711#755#0" expanded="true" />
+            <marker date="1498480081981" expanded="true" signature="1188:1366" ph="CREATE TABLE... msg" />
+            <marker date="1498480081981" expanded="true" signature="4883:4939" ph="INSERT INTO id... " />
+            <marker date="1498480081981" expanded="true" signature="4961:4975" ph="SELECT * FRO... id" />
+            <marker date="1498480081981" expanded="true" signature="4961:4978" ph="SELECT * FRO... msg" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/moniter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -548,9 +737,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
           <caret line="100" column="4" lean-forward="false" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
-          <folding>
-            <marker date="1498477321846" expanded="true" signature="2099:2237" ph="CREATE TABLE... msg" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -584,9 +771,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -603,9 +790,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
           <caret line="100" column="4" lean-forward="false" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
-          <folding>
-            <marker date="1498477321846" expanded="true" signature="2099:2237" ph="CREATE TABLE... msg" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -639,9 +824,9 @@
         <state relative-caret-position="1653">
           <caret line="87" column="39" lean-forward="true" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -658,9 +843,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
           <caret line="100" column="4" lean-forward="true" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
-          <folding>
-            <marker date="1498477321846" expanded="true" signature="2099:2237" ph="CREATE TABLE... msg" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -694,9 +877,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -738,9 +921,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -796,9 +979,9 @@
         <state relative-caret-position="1900">
           <caret line="101" column="30" lean-forward="false" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -833,9 +1016,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>
@@ -857,28 +1040,26 @@
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="76">
-            <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <first_editor relative-caret-position="171">
+            <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
             <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/jieba/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1900">
-          <caret line="100" column="4" lean-forward="false" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
-          <folding>
-            <marker date="1498477321846" expanded="true" signature="2099:2237" ph="CREATE TABLE... msg" />
-          </folding>
+        <state relative-caret-position="8284">
+          <caret line="436" column="36" lean-forward="false" selection-start-line="436" selection-start-column="36" selection-end-line="436" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/get2db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+        <state relative-caret-position="1235">
+          <caret line="68" column="23" lean-forward="false" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
           <folding>
             <element signature="e#711#755#0" expanded="true" />
             <marker date="1498480081981" expanded="true" signature="1188:1366" ph="CREATE TABLE... msg" />
@@ -889,22 +1070,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/foobar.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="94" column="51" lean-forward="false" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/errors.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        <state relative-caret-position="319">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jieba/analyse/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jieba/analyse/tfidf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="75" column="11" lean-forward="true" selection-start-line="75" selection-start-column="11" selection-end-line="75" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/moniter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3762">
-          <caret line="47" column="31" lean-forward="true" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+        <state relative-caret-position="571">
+          <caret line="304" column="21" lean-forward="true" selection-start-line="304" selection-start-column="21" selection-end-line="304" selection-end-column="21" />
           <folding>
-            <element signature="e#727#771#0" expanded="true" />
-            <marker date="1498812094990" expanded="true" signature="1242:1259" ph="select * fro... msg" />
-            <marker date="1498812094990" expanded="true" signature="1303:1320" ph="select * fro... msg" />
+            <element signature="e#781#825#0" expanded="true" />
+            <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
+            <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
         </state>
       </provider>

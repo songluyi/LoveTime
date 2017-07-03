@@ -5,36 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d296589-6dca-46c3-9bad-963932119495" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/foobar.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/__main__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/_compat.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/analyzer.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/idf.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/textrank.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/analyse/tfidf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/dict.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_emit.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_emit.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_start.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_start.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_trans.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/finalseg/prob_trans.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/char_state_tab.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/char_state_tab.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_emit.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_emit.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_start.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_start.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_trans.p" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/prob_trans.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jieba/posseg/viterbi.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moniter.py" afterPath="$PROJECT_DIR$/moniter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -72,16 +45,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="moniter.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="moniter.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/moniter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="304" column="21" lean-forward="true" selection-start-line="304" selection-start-column="21" selection-end-line="304" selection-end-column="21" />
+            <state relative-caret-position="172">
+              <caret line="295" column="33" lean-forward="true" selection-start-line="295" selection-start-column="33" selection-end-line="295" selection-end-column="33" />
               <folding>
                 <element signature="e#781#825#0" expanded="true" />
                 <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
                 <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -148,12 +131,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="171">
-                <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+              <first_editor relative-caret-position="57">
+                <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -177,13 +160,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/errors.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/get2db.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/foobar.txt" />
         <option value="$PROJECT_DIR$/jieba/analyse/__init__.py" />
         <option value="$PROJECT_DIR$/moniter.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -553,7 +536,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1364" height="728" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25296736" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -561,7 +544,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24433658" sideWeight="0.49703702" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24433658" sideWeight="0.49703702" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1030,24 +1013,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="171">
-            <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jieba/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8284">
@@ -1114,13 +1079,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/moniter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="304" column="21" lean-forward="true" selection-start-line="304" selection-start-column="21" selection-end-line="304" selection-end-column="21" />
+        <state relative-caret-position="172">
+          <caret line="295" column="33" lean-forward="true" selection-start-line="295" selection-start-column="33" selection-end-line="295" selection-end-column="33" />
           <folding>
             <element signature="e#781#825#0" expanded="true" />
             <marker date="1498919668599" expanded="true" signature="1363:1380" ph="select * fro... msg" />
             <marker date="1498919668599" expanded="true" signature="1451:1468" ph="select * fro... msg" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="57">
+            <caret line="3" column="23" lean-forward="false" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

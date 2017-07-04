@@ -40,3 +40,7 @@ class ValueError(LoveError):
     def __init__(self, field, msg):
         super(ValueError,self).__init__('program can not run as there is value error', field, msg)
 
+class FileError(LoveError):
+    def __init__(self, field, msg):
+        super(FileError, self).__init__('your file is not found, please input your msg file', field, msg)
+

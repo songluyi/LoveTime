@@ -2,7 +2,7 @@
 # 2017/6/12 9:53
 """
 -------------------------------------------------------------------------------
-Function:   用来将QQ 信息标准化 导入mysql 数据库
+Function:   用来将QQ 信息标准化 导入sqlite3 数据库
 Version:    1.0
 Author:     SLY
 Contact:    slysly759@gmail.com 
@@ -27,7 +27,7 @@ from colorama import init, Fore, Back, Style
 import re
 # 改为sqllite3
 import logging
-
+from errors import FileError
 logging.basicConfig(level=logging.INFO)
 
 
@@ -67,12 +67,15 @@ class get2db(object):
             for f in files:
                 if f.find('txt') != -1:
                     FileList.append(os.path.join(root, f))
+        if not FileList:
+            raise FileError('File','msg txt file was not found please check.')
+        else:
+            for item in FileList:
+                 print(Fore.WHITE + '检测到您目录下有如下txt聊天文件 请确认是不是你要进行检测')
+                 print(item)
 
-        for item in FileList:
-            print(Fore.WHITE + '检测到您目录下有如下txt聊天文件 请确认是不是你要进行检测')
-            print(item)
         return FileList
-
+    # 目前就支持单文本导入即可，多了累赘
     def check_format(self, path_dict):
         for file in path_dict:
             file_count = 0

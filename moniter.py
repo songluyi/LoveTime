@@ -33,6 +33,9 @@ from collections import Counter
 import datetime
 from jieba import analyse
 # 效率的事情稍 后来转么进行实现 特别是规范化的问题
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+#生成词云图
 import jieba
 import logging
 
@@ -316,3 +319,22 @@ if __name__ == "__main__":
     print(",".join(tags))
     # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
     # print(s)
+
+#生成词云图
+wl = ",".join(tags)
+wc = WordCloud(background_color="black",  # 设置背景颜色
+               # mask = "图片",  #设置背景图片
+               max_words=200,  # 设置最大显示的字数
+               # stopwords = "", #设置停用词
+               font_path="C:\Windows\Fonts\AdobeFangsongStd-Regular.otf",
+               # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
+               max_font_size=50,  # 设置字体最大值
+               random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
+               )
+
+myword = wc.generate(wl)  # 生成词云
+
+# 展示词云图
+plt.imshow(myword)
+plt.axis("off")
+plt.show()

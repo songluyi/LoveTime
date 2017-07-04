@@ -55,26 +55,23 @@ class get2db(object):
 
     def get_path(self):
         import os
-        current_path = os.path.abspath(os.path.join(os.path.dirname('get2db.py'), os.path.pardir))
-        new_path = current_path + 'lovetime' + '\\' + 'msg' + '\\'
+        current_path = os.getcwd()
+        new_path = current_path + '\\' + 'msg' + '\\'
         FileList = []
         rootdir = new_path
-        for root, subFolders, files in os.walk(rootdir):
-            # 排除特定的子目录
-            # if 'done' in subFolders:
-            #     subFolders.remove('done')
-            # 查找txt 聊天文件
-            for f in files:
-                if f.find('txt') != -1:
-                    FileList.append(os.path.join(root, f))
+        for i in os.listdir(rootdir):
+            if '.txt' in i:
+                FileList.append(rootdir + i)
+
+        for item in FileList:
+            print(Fore.WHITE + '检测到您目录下有如下txt聊天文件 请确认是不是你要进行检测')
+            print(item)
+
         if not FileList:
-            raise FileError('File','msg txt file was not found please check.')
-        else:
-            for item in FileList:
-                 print(Fore.WHITE + '检测到您目录下有如下txt聊天文件 请确认是不是你要进行检测')
-                 print(item)
+            print(rootdir,':  txt file was not found please check.')
 
         return FileList
+
     # 目前就支持单文本导入即可，多了累赘
     def check_format(self, path_dict):
         for file in path_dict:

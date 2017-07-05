@@ -38,6 +38,7 @@ from wordcloud import WordCloud
 #生成词云图
 import jieba
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 
@@ -60,6 +61,7 @@ class moniter_platform(object):
         self.time_gap = []
         self.sql = 'select * from msg'
         self.count_word = {}
+
 
     def get_db_reslt(self):
         sql = 'select * from msg'
@@ -296,6 +298,28 @@ class moniter_platform(object):
         jieba_count = sorted(self.dict2list(count_gap_word), key=lambda x: x[1], reverse=True)
         # print(jieba_count)
         return jieba_count
+    def make_tag_pic(self,tag_list):
+        # 生成词云图
+        wl = ",".join(tag_list)
+        foot_path=os.getcwd()+'\\show\\font\\造字工房尚黑G0v1常规体.otf'
+        print(foot_path)
+        wc = WordCloud(background_color="black",  # 设置背景颜色
+                       # mask = "图片",  #设置背景图片
+                       max_words=200,  # 设置最大显示的字数
+                       # stopwords = "", #设置停用词
+                       # 这里注意兼容 linux 版本 以及font 字体
+                       font_path=foot_path,
+                       # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
+                       max_font_size=50,  # 设置字体最大值
+                       random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
+                       )
+        # 这里将图片存放到pic 文件夹里面
+        myword = wc.generate(wl)  # 生成词云
+
+        # 展示词云图
+        plt.imshow(myword)
+        plt.axis("off")
+        plt.show()
 
 
 # 这些复杂的函数 到时还是写一个unittest
@@ -315,26 +339,13 @@ if __name__ == "__main__":
     print(sorted(moniter.dict2list(moniter.count_word), key=lambda x: x[1], reverse=True))
     file_path = get2db().get_path()
     content = ''.join(moniter.get_field(1))
+
+    # todo 长度是需要变化的
+
     tags = jieba.analyse.extract_tags(content, 40)
     print(",".join(tags))
     # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
     # print(s)
+    moniter.make_tag_pic(tags)
 
-#生成词云图
-wl = ",".join(tags)
-wc = WordCloud(background_color="black",  # 设置背景颜色
-               # mask = "图片",  #设置背景图片
-               max_words=200,  # 设置最大显示的字数
-               # stopwords = "", #设置停用词
-               font_path="C:\Windows\Fonts\AdobeFangsongStd-Regular.otf",
-               # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
-               max_font_size=50,  # 设置字体最大值
-               random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
-               )
 
-myword = wc.generate(wl)  # 生成词云
-
-# 展示词云图
-plt.imshow(myword)
-plt.axis("off")
-plt.show()

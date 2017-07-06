@@ -1,0 +1,5 @@
+colorama
+jieba
+matplotlib
+wordcloud
+

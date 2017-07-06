@@ -28,6 +28,7 @@ import re
 # 改为sqllite3
 import logging
 from errors import FileError
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -68,7 +69,7 @@ class get2db(object):
             print(item)
 
         if not FileList:
-            print(rootdir,':  txt file was not found please check.')
+            print(rootdir, ':  txt file was not found please check.')
 
         return FileList
 
@@ -155,7 +156,7 @@ class get2db(object):
             cursor.executemany(insert_sql, data)
         db.commit()
 
-
+# 这个之后再归类到一起 现在还有很多希望修改的
 if __name__ == "__main__":
     msg = get2db()
     my_path = msg.get_path()

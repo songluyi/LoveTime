@@ -35,12 +35,13 @@ from jieba import analyse
 # 效率的事情稍 后来转么进行实现 特别是规范化的问题
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
-#生成词云图
+# 生成词云图
 import jieba
 import logging
 import os
 
-logging.basicConfig(level=logging.INFO)
+LOG_FILENAME_NOTE = "./log/log.txt"
+logging.basicConfig(filename=LOG_FILENAME_NOTE, level=logging.INFO)
 
 
 def log(msg):
@@ -61,7 +62,6 @@ class moniter_platform(object):
         self.time_gap = []
         self.sql = 'select * from msg'
         self.count_word = {}
-
 
     def get_db_reslt(self):
         sql = 'select * from msg'
@@ -298,10 +298,11 @@ class moniter_platform(object):
         jieba_count = sorted(self.dict2list(count_gap_word), key=lambda x: x[1], reverse=True)
         # print(jieba_count)
         return jieba_count
-    def make_tag_pic(self,tag_list):
+
+    def make_tag_pic(self, tag_list):
         # 生成词云图
         wl = ",".join(tag_list)
-        foot_path=os.getcwd()+'\\show\\font\\造字工房尚黑G0v1常规体.otf'
+        foot_path = os.getcwd() + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
         print(foot_path)
         wc = WordCloud(background_color="black",  # 设置背景颜色
                        # mask = "图片",  #设置背景图片
@@ -347,5 +348,3 @@ if __name__ == "__main__":
     # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
     # print(s)
     moniter.make_tag_pic(tags)
-
-

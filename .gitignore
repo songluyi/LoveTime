@@ -23,7 +23,6 @@ parts/
 sdist/
 var/
 
-*.txt
 *.egg-info/
 .installed.cfg
 *.egg

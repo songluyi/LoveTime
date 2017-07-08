@@ -31,9 +31,9 @@ error definition
 
 # 父类继承以及使用并未真正掌握
 class LoveError(Exception):
-    def __init__(self, error_code, msg='a small beauty bug'):
+    def __init__(self, error_code='404', msg='a small beauty bug'):
         # Exception 继承后我发现 这个msg 才不会被pycharm 标黄
-        super(LoveError, self).__init__(msg)
+        super(LoveError, self).__init__(error_code, msg)
         self.error_code = error_code
         self.msg = msg
 
@@ -42,8 +42,8 @@ class LoveError(Exception):
 
 
 class ValueError(LoveError):
-    def __init__(self, msg):
-        super(ValueError, self).__init__('program can not run as there is value error', msg)
+    def __init__(self, value_code='006', msg='program can not run as there is value error'):
+        super(ValueError, self).__init__(value_code, msg)
 
 
 class FileError(LoveError):

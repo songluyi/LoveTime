@@ -93,8 +93,27 @@ class moniter_platform(object):
                 hour_result[index_hour] = 1
         day_list = sorted(self.dict2list(index_result), key=lambda x: x[1], reverse=True)
         hour_list = sorted(self.dict2list(hour_result), key=lambda x: x[1], reverse=True)
-
-        return [day_list, hour_list]
+        new_day_list=self.dict_tuple_2_json(day_list)
+        new_hour_list = self.dict_tuple_2_json(hour_list)
+        # 新建转换
+        self.json2file(new_day_list,'day.json')
+        self.json2file(new_hour_list, 'hour.json')
+        return [new_day_list, new_hour_list]
+    '''
+    该方法主要用于 将字典 转换为js 可以识别的 json txt
+    但是 后续 还需要润色
+    '''
+    def dict_tuple_2_json(self,dict_tuple):
+        back_dict={}
+        x_data=[]
+        y_data=[]
+        for i in dict_tuple:
+            # 注意： 这里有可能前面字符串截取有问题
+            x_data.append(str(i[0]).replace(':',''))
+            y_data.append(i[1])
+        back_dict['x_data']=x_data
+        back_dict['y_data']=y_data
+        return back_dict
 
     def dict2list(self, dic):
         ''' 将字典转化为列表 '''
@@ -144,17 +163,6 @@ class moniter_platform(object):
                 compare_time = datetime.datetime.strptime(i[3], '%Y-%m-%d %H:%M:%S')
                 if compare_time <= header_time and compare_time >= tail_time:
                     back_result.append(i[num])
-        # else:
-        #     for i in self.db_result:
-        #         if not time_limit:
-        #             back_result.append(i[num])
-        #         else:
-        #             tail_time=datetime.datetime.strptime(time_limit[0],'%Y-%m-%d')
-        #             header_time=datetime.datetime.strptime(time_limit[1],'%Y-%m-%d')
-        #             compare_time=datetime.datetime.strptime(i[3],'%Y-%m-%d %H:%M:%S')
-        #             if compare_time <= header_time and compare_time >= tail_time:
-        #                  back_result.append(i[num])
-        # print(back_result)
         return back_result
 
     # 获取聊天的年份 方便对回复速率进行年份间的评估
@@ -322,6 +330,12 @@ class moniter_platform(object):
         plt.axis("off")
         plt.show()
 
+    def json2file(self,dict,filename):
+        file_path=os.getcwd()+'\\show\\json\\'+filename
+        f=open(file_path,'w')
+        f.write(str(dict).replace("'",'"'))
+        print(Fore.GREEN+'set up file success')
+
 
 # 这些复杂的函数 到时还是写一个unittest
 if __name__ == "__main__":
@@ -348,3 +362,7 @@ if __name__ == "__main__":
     # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
     # print(s)
     moniter.make_tag_pic(tags)
+    # my_dict=moniter.visual_time()
+    # print(my_dict[1])
+    # moniter.json2file(my_dict[1],'hour.json')
+

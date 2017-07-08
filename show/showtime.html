@@ -17,33 +17,36 @@
         // 显示标题，图例和空的坐标轴
         myChart.setOption({
             title: {
-                text: '异步数据加载示例'
+                text: '最爱聊天的时段'
             },
             tooltip: {},
             legend: {
-                data:['销量']
+                data:['次数']
             },
             xAxis: {
-                data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                data:  []
             },
             yAxis: {},
             series: [{
-                name: '销量',
+                name: '次数',
                 type: 'bar',
                 data: []
             }]
         });
 
         // 异步加载数据
-        $.get('./json/chat.json').done(function (data) {
+        $.get('./json/hour.json').done(function (data) {
             myChart.hideLoading();
             // 填入数据
             // 这个字段还是要先被初始化 哪怕是空白也行
             myChart.setOption({
+                xAxis: {
+                data: data.x_data
+                },
                 series: [{
                     // 根据名字对应到相应的系列
-                    name: '销量',
-                    data: data.data
+                    name: '次数',
+                    data: data.y_data
                 }]
             });
         });

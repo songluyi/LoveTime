@@ -303,7 +303,7 @@ class moniter_platform(object):
         # 生成词云图
         wl = ",".join(tag_list)
         foot_path = os.getcwd() + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
-        print(foot_path)
+        # print(foot_path)
         wc = WordCloud(background_color="black",  # 设置背景颜色
                        # mask = "图片",  #设置背景图片
                        max_words=200,  # 设置最大显示的字数

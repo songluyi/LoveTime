@@ -24,7 +24,7 @@
                 data:['销量']
             },
             xAxis: {
-                data: []
+                data:  ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
             },
             yAxis: {},
             series: [{
@@ -36,16 +36,13 @@
 
         // 异步加载数据
         $.get('./json/chat.json').done(function (data) {
+            myChart.hideLoading();
             // 填入数据
-            console.log(data.data);
+            // 这个字段还是要先被初始化 哪怕是空白也行
             myChart.setOption({
-                xAxis: {
-                    data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-                },
                 series: [{
                     // 根据名字对应到相应的系列
                     name: '销量',
-
                     data: data.data
                 }]
             });

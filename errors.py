@@ -27,20 +27,25 @@ code is far away from bugs with the god Animal protecting
 error definition
 
 '''
+
+
 # 父类继承以及使用并未真正掌握
 class LoveError(Exception):
-    def __init__(self, error, data='', msg=''):
+    def __init__(self, error_code, msg='a small beauty bug'):
         # Exception 继承后我发现 这个msg 才不会被pycharm 标黄
-        super(LoveError,self).__init__(msg)
-        self.data=error
-        self.error=data
-        self.msg=msg
+        super(LoveError, self).__init__(msg)
+        self.error_code = error_code
+        self.msg = msg
+
+    def __str__(self):
+        return repr(self.msg)
+
 
 class ValueError(LoveError):
-    def __init__(self, field, msg):
-        super(ValueError,self).__init__('program can not run as there is value error', field, msg)
+    def __init__(self, msg):
+        super(ValueError, self).__init__('program can not run as there is value error', msg)
+
 
 class FileError(LoveError):
-    def __init__(self, field, msg):
-        super(FileError, self).__init__('your file is not found, please input your msg file', field, msg)
-
+    def __init__(self, file_code='007', msg="please input your msg file"):
+        super(FileError, self).__init__(error_code=file_code, msg=msg)

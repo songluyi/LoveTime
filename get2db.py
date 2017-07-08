@@ -70,7 +70,7 @@ class get2db(object):
 
         if not FileList:
             print(rootdir, ':  txt file was not found please check.')
-
+            raise FileError
         return FileList
 
     # 目前就支持单文本导入即可，多了累赘

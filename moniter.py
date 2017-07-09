@@ -35,6 +35,8 @@ from jieba import analyse
 # 效率的事情稍 后来转么进行实现 特别是规范化的问题
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+import numpy as np
+from PIL import Image
 # 生成词云图
 import jieba
 import logging
@@ -308,26 +310,36 @@ class moniter_platform(object):
         return jieba_count
 
     def make_tag_pic(self, tag_list):
+        # 获取工作路径
+        file_path = os.getcwd()
+
         # 生成词云图
         wl = ",".join(tag_list)
-        foot_path = os.getcwd() + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
-        # print(foot_path)
+        foot_path = file_path + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
+        save_path = file_path + '\\pic\\词云图.jpg'
+        # print(save_path)
+        # 设置背景图片路径
+        abel_mask = np.array(Image.open(file_path + '\\show\\ciyun\\background_image\\love .jpg'))
+
         wc = WordCloud(background_color="black",  # 设置背景颜色
-                       # mask = "图片",  #设置背景图片
+                       mask = abel_mask,  #设置背景图片
                        max_words=200,  # 设置最大显示的字数
                        # stopwords = "", #设置停用词
                        # 这里注意兼容 linux 版本 以及font 字体
                        font_path=foot_path,
                        # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
-                       max_font_size=50,  # 设置字体最大值
+                       max_font_size=100,  # 设置字体最大值
                        random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
+                       scale=1.5   #设置保存的词云图尺寸大小
                        )
-        # 这里将图片存放到pic 文件夹里面
-        myword = wc.generate(wl)  # 生成词云
 
+        myword = wc.generate(wl)  # 生成词云
+        # 这里将图片存放到pic 文件夹里面
+        wc.to_file(save_path)
         # 展示词云图
+        plt.title("LoveTime")
         plt.imshow(myword)
-        plt.axis("off")
+        plt.axis("off") # figure（显示窗口）默认是带axis（坐标尺）的，如果没有需要，我们可以关掉
         plt.show()
 
     def json2file(self,dict,filename):

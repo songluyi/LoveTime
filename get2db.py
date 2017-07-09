@@ -127,11 +127,12 @@ class get2db(object):
                         msg_time = re.findall('\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2}', line)
                         msg_time = msg_time[0]
                         # 一般来讲 QQ的用户名20个字符就足够了
+                        # 但是我发现有一个小bug 就是如果是英文好友 就会出现未查询到
                         msg_user = re.findall('[\u4e00-\u9fa5]{1,20}', line)
                         if msg_user:
                             msg_user = msg_user[0]
                         else:
-                            msg_user = '用户名未查询到'
+                            msg_user = str(line[19:])
                         db_content['time'] = msg_time
                         db_content['user'] = msg_user
                     else:
@@ -148,7 +149,7 @@ class get2db(object):
         select_sql = "SELECT * FROM msg"
         cursor.execute(select_sql)
         check_result = cursor.fetchall()
-        # 如果数据库为空才导入，不为空则不导入
+        # 如果数据库为空才导入，不为空则不导入 后续还是要加入判定 或者没运行一次就删除一次
         if check_result:
             print(Fore.YELLOW + '数据库中已经存在了需要检测的聊天记录,本次不会导入！')
         else:
@@ -158,6 +159,7 @@ class get2db(object):
 
 # 这个之后再归类到一起 现在还有很多希望修改的
 if __name__ == "__main__":
+
     msg = get2db()
     my_path = msg.get_path()
     my_content = msg.get_content(my_path)

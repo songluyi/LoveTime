@@ -149,12 +149,6 @@ class moniter_platform(object):
             check_result = self.db_result
 
         # 如果db_result为空 就到数据区中取值 否则就用平时已经存储过的值
-        # if not self.db_result:
-        # db=get2db().connect_db()
-        # cursor = db.cursor()
-        # # all_sql='select * from msg'
-        # cursor.execute(all_sql)
-        # check_result = cursor.fetchall()
 
         for i in check_result:
             if not time_limit:
@@ -273,7 +267,22 @@ class moniter_platform(object):
         sec_ratio_reply = sec_frequency / first_frequency
         print(self.first_strike_up + "回复频率为 1: " + "%.2f" % first_ratio_reply)
         print(self.sec_strike_up + "回复频率为 1: " + "%.2f" % sec_ratio_reply)
-        return (first_frequency, 1 - first_frequency)
+        onedict=dict()
+        secdict=dict()
+        back_json={}
+
+        first_name_fluency=self.first_strike_up + "回复频率"
+        sec_name_fluency=self.sec_strike_up+'回复频率'
+        onedict["name"]=first_name_fluency
+        onedict["value"]=first_ratio_reply*100
+        secdict["name"]=sec_name_fluency
+        secdict["value"]=sec_ratio_reply*100
+        back_json['x_data']=[first_name_fluency,sec_name_fluency]
+        back_json['y_data']=[onedict, secdict]
+        #
+        print(back_json)
+        self.json2file(back_json,'reply_ratio.json')
+        return back_json
 
     def get_content_ratio(self, time_gap=None):
         first_content_list = ''.join(self.get_field(1, time_gap, 'qq_user', self.first_strike_up))
@@ -344,9 +353,9 @@ class moniter_platform(object):
 
     def json2file(self,dict,filename):
         file_path=os.getcwd()+'\\show\\json\\'+filename
-        f=open(file_path,'w')
+        f=open(file_path,'w',encoding='utf-8')
         f.write(str(dict).replace("'",'"'))
-        print(Fore.GREEN+'set up file success')
+        print(Fore.GREEN+'set up %s success'%filename)
 
 
 # 这些复杂的函数 到时还是写一个unittest
@@ -363,18 +372,14 @@ if __name__ == "__main__":
         moniter.get_content_ratio(small_gap)
         moniter.jieba_count_word(small_gap)
         count += 1
-    print(sorted(moniter.dict2list(moniter.count_word), key=lambda x: x[1], reverse=True))
-    file_path = get2db().get_path()
-    content = ''.join(moniter.get_field(1))
-
-    # todo 长度是需要变化的
-
-    tags = jieba.analyse.extract_tags(content, 40)
-    print(",".join(tags))
-    # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
-    # print(s)
-    moniter.make_tag_pic(tags)
+    # print(sorted(moniter.dict2list(moniter.count_word), key=lambda x: x[1], reverse=True))
+    # file_path = get2db().get_path()
+    # content = ''.join(moniter.get_field(1))
+    #
+    # # todo 长度是需要变化的
+    # tags = jieba.analyse.extract_tags(content, 40)
+    # print(",".join(tags))
+    # moniter.make_tag_pic(tags)
     # my_dict=moniter.visual_time()
-    # print(my_dict[1])
-    # moniter.json2file(my_dict[1],'hour.json')
+    moniter.get_reply_fluency()
 

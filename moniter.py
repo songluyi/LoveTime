@@ -279,8 +279,6 @@ class moniter_platform(object):
         secdict["value"]=sec_ratio_reply*100
         back_json['x_data']=[first_name_fluency,sec_name_fluency]
         back_json['y_data']=[onedict, secdict]
-        #
-        print(back_json)
         self.json2file(back_json,'reply_ratio.json')
         return back_json
 
@@ -293,6 +291,20 @@ class moniter_platform(object):
         sec_ratio_content = sec_content_length / first_content_length
         print(self.first_strike_up + "内容回复比率为 1: " + "%.2f" % first_ratio_content)
         print(self.sec_strike_up + "内容回复比率为 1: " + "%.2f" % sec_ratio_content)
+        # 这里重新初始化
+        onedict=dict()
+        secdict=dict()
+        back_json={}
+        first_name_content = self.first_strike_up + "内容回复比率"
+        sec_name_content = self.sec_strike_up + '内容回复比率'
+        onedict["name"] = first_name_content
+        onedict["value"] = first_ratio_content * 100
+        secdict["name"] = sec_name_content
+        secdict["value"] = sec_ratio_content * 100
+        back_json['x_data'] = [first_name_content, sec_name_content]
+        back_json['y_data'] = [onedict, secdict]
+        self.json2file(back_json, 'content_ratio.json')
+        return back_json
 
     def jieba_count_word(self, time_gap=None):
         jieba.set_dictionary('foobar.txt')
@@ -382,4 +394,5 @@ if __name__ == "__main__":
     # moniter.make_tag_pic(tags)
     # my_dict=moniter.visual_time()
     moniter.get_reply_fluency()
+    moniter.get_content_ratio()
 

@@ -247,14 +247,13 @@ class moniter_platform(object):
 
         for year in self.chat_his[:-2]:
             self.time_gap.append(str(year) + '-01-01')
-            self.time_gap.append(str(year) + '-06-01')
+            self.time_gap.append(str(year) + '-06-30')
         # 若存在最初日期大于六月份
         log(self.chat_his)
         if not self.chat_his[-2]:
             self.time_gap = self.time_gap[1:]
         if not self.chat_his[-1]:
             self.time_gap = self.time_gap[:-1]
-
         log('your time_gap %s' % self.time_gap)
         return self.time_gap
 
@@ -270,7 +269,6 @@ class moniter_platform(object):
         onedict=dict()
         secdict=dict()
         back_json={}
-
         first_name_fluency=self.first_strike_up + "回复频率"
         sec_name_fluency=self.sec_strike_up+'回复频率'
         onedict["name"]=first_name_fluency
@@ -366,10 +364,49 @@ class moniter_platform(object):
     def json2file(self,dict,filename):
         file_path=os.getcwd()+'\\show\\json\\'+filename
         f=open(file_path,'w',encoding='utf-8')
-        f.write(str(dict).replace("'",'"'))
-        print(Fore.GREEN+'set up %s success'%filename)
+        f.write(str(dict).replace("'",'"').replace('True', 'true'))
+        print(Fore.GREEN+'Set up %s success'%filename)
 
+    def make_calenda_data(self, time_list=None):
+        time_list=self.time_gap
+        calendar_list=[]
 
+        for count in range(len(time_list)-1):
+            single_calendar = {}
+            my_range=[time_list[count],time_list[count+1]]
+            my_top=100+240*count
+            if str(6) in time_list[count]:
+                my_formatter='{start}'+' 下半年'
+            else:
+                my_formatter = '{start}' + ' 上半年'
+            single_calendar["left"]="center"
+            single_calendar["range"]=my_range
+            single_calendar["top"]=my_top
+            single_calendar["splitLine"]={
+            "show": True,
+            "lineStyle": {
+                "color": '#000',
+                "width": 4,
+                "type": 'solid'
+            }}
+            single_calendar["yearLabel"]={
+            "formatter": my_formatter,
+            "textStyle": {
+                "color": '#fff'
+            }
+        }
+            single_calendar["itemStyle"]={
+            "normal": {
+                "color": '#323c48',
+                "borderWidth": 1,
+                "borderColor": '#111'
+            }
+        }
+            calendar_list.append(single_calendar)
+        print(calendar_list)
+        back_json={"data":calendar_list}
+        self.json2file(back_json,'calendar.json')
+        return calendar_list
 # 这些复杂的函数 到时还是写一个unittest
 if __name__ == "__main__":
     moniter = moniter_platform()
@@ -395,4 +432,5 @@ if __name__ == "__main__":
     # my_dict=moniter.visual_time()
     moniter.get_reply_fluency()
     moniter.get_content_ratio()
+    moniter.make_calenda_data()
 

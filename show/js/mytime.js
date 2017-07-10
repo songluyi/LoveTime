@@ -165,13 +165,20 @@ function getVirtulData(year) {
             Math.floor(Math.random() * 10000)
         ]);
     }
-    console.log(data);
     return data;
 }
 
 var data = getVirtulData(2016);
 var myLove = echarts.init(document.getElementById('lovetime'));
+var container = document.getElementById('lovetime');
 // 显示标题，图例和空的坐标轴
+// var resizeMyLove = function () {
+//     container.style.width = window.innerWidth+'px';
+//     container.style.height = window.innerWidth+'px';
+// };
+// //设置容器高宽
+// resizeMyLove();
+// 基于准备好的dom，初始化echarts实例
 myLove.setOption(
     {
     backgroundColor: '#404a59',
@@ -223,7 +230,7 @@ myLove.setOption(
     }, {
         top: 340,
         left: 'center',
-        range: ['2016-07-01', '2016-12-31'],
+        range: ['2016-06-30', '2017-01-01'],
         splitLine: {
             show: true,
             lineStyle: {
@@ -245,7 +252,34 @@ myLove.setOption(
                 borderColor: '#111'
             }
         }
+    },
+    {
+        top: 580,
+        left: 'center',
+        range: ['2017-01-01', '2017-06-31'],
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#000',
+                width: 4,
+                type: 'solid'
+            }
+        },
+        yearLabel: {
+            formatter: '{start}  1nd',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: '#323c48',
+                borderWidth: 1,
+                borderColor: '#111'
+            }
+        }
     }],
+
     series : [
         {
             name: '频次',
@@ -329,19 +363,16 @@ myLove.setOption(
 });
 
 // 异步加载数据
-// $.get('./json/content_ratio.json').done(function (data) {
-//     myContent.hideLoading();
-//     // 填入数据
-//     // 这个字段还是要先被初始化 哪怕是空白也行
-//     myContent.setOption({
-//         legend :{
-//             data:data.x_data
-//         },
-//         series: [{
-//             // 根据名字对应到相应的系列
-//
-//             data: data.y_data
-//         }]
-//     });
-// });
+$.get('./json/calendar.json').done(function (data) {
+    myLove.hideLoading();
+    // 填入数据
+    // 这个字段还是要先被初始化 哪怕是空白也行
+    console.log(data.data.length);
+    // myLove.height = (data.data.length)*250+'px';
+    // container.style.width = (data.data.length)*250+'px';
+    container.style.height = (data.data.length)*250+'px';
+    myLove.setOption({
+        calendar :data.data
+    });
+});
 

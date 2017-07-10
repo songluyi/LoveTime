@@ -567,3 +567,147 @@ DEBUG:jieba:Prefix dict has been built succesfully.
 INFO:root:select * from msg where qq_user='LSY
 '
 INFO:root:select * from msg where qq_user='名一'
+INFO:root:['2014', '2015', '2016', '2017', False, True]
+INFO:root:['2014', '2015', '2016', '2017', False, True]
+INFO:root:your time_gap ['2014-06-30', '2015-01-01', '2015-06-30', '2016-01-01', '2016-06-30', '2017-01-01', '2017-06-30']
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.022 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.000 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+INFO:root:['2014', '2015', '2016', '2017', False, True]
+INFO:root:['2014', '2015', '2016', '2017', False, True]
+INFO:root:your time_gap ['2014-06-30', '2015-01-01', '2015-06-30', '2016-01-01', '2016-06-30', '2017-01-01', '2017-06-30']
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.009 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.000 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.000 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+INFO:root:['2014', '2015', '2016', '2017', False, True]
+INFO:root:['2014', '2015', '2016', '2017', False, True]
+INFO:root:your time_gap ['2014-06-30', '2015-01-01', '2015-06-30', '2016-01-01', '2016-06-30', '2017-01-01', '2017-06-30']
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.008 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.001 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'
+DEBUG:jieba:Building prefix dict from E:\lovetime\foobar.txt ...
+DEBUG:jieba:Loading model from cache C:\Users\ADMINI~1\AppData\Local\Temp\jieba.uc14fb024f68dcf54ac3fe96b7ce89327.cache
+DEBUG:jieba:Loading model cost 0.000 seconds.
+DEBUG:jieba:Prefix dict has been built succesfully.
+INFO:root:select * from msg where qq_user='LSY
+'
+INFO:root:select * from msg where qq_user='名一'

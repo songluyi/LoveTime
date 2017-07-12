@@ -533,13 +533,15 @@ $.get('./json/calendar.json').done(function (data) {
     // 通过如下进行更改原先宽高大小，仅仅通过style.height 是不行的
     myHight=(data.data.length)*250+'px';
     myLove.resize({height:myHight});
+
     // 填入数据
     // 这个字段还是要先被初始化 哪怕是空白
     // myLove.height = (data.data.length)*250+'px';
     // container.style.width = (data.data.length)*250+'px';
     container.style.height = (data.data.length)*250+'px';
     myLove.setOption({
-        calendar :data.data,
+        calendar :data.data
+        // series:data.calendar
 
     });
 });

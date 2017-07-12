@@ -152,7 +152,6 @@ $.get('./json/content_ratio.json').done(function (data) {
         }]
     });
 });
-
 function getVirtulData(year) {
     year = year || '2017';
     var date = +echarts.number.parseDate(year + '-01-01');
@@ -168,9 +167,13 @@ function getVirtulData(year) {
     return data;
 }
 
-var data = getVirtulData(2016);
+var data = getVirtulData(2014);
+var newData = getVirtulData(2015);
+var fuckData=getVirtulData(2016);
+console.log(newData);
 var myLove = echarts.init(document.getElementById('lovetime'));
 var container = document.getElementById('lovetime');
+// container.style.height = 1800+'px';
 // 显示标题，图例和空的坐标轴
 // var resizeMyLove = function () {
 //     container.style.width = window.innerWidth+'px';
@@ -179,6 +182,7 @@ var container = document.getElementById('lovetime');
 // //设置容器高宽
 // resizeMyLove();
 // 基于准备好的dom，初始化echarts实例
+
 myLove.setOption(
     {
     backgroundColor: '#404a59',
@@ -311,11 +315,97 @@ myLove.setOption(
             }
         },
         {
+            name: '频次',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            data: newData,
+            calendarIndex: 1,
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ddb926'
+                }
+            }
+        },
+         {
+            name: '频次',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 2,
+            data: newData,
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ddb926'
+                }
+            }
+        },
+               {
+            name: '频次',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            data: fuckData,
+            calendarIndex: 3,
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ddb926'
+                }
+            }
+        },
+         {
+            name: '频次',
+            type: 'scatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 4,
+            data: fuckData,
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            itemStyle: {
+                normal: {
+                    color: '#ddb926'
+                }
+            }
+        },
+        {
             name: 'Top 12',
             type: 'effectScatter',
             coordinateSystem: 'calendar',
-            calendarIndex: 1,
+            calendarIndex: 0,
             data: data.sort(function (a, b) {
+                return b[1] - a[1];
+            }).slice(0, 12),
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        },
+
+        {
+            name: 'Top 12',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 2,
+            data: newData.sort(function (a, b) {
                 return b[1] - a[1];
             }).slice(0, 12),
             symbolSize: function (val) {
@@ -339,7 +429,82 @@ myLove.setOption(
             name: 'Top 12',
             type: 'effectScatter',
             coordinateSystem: 'calendar',
-            data: data.sort(function (a, b) {
+            calendarIndex: 1,
+            data: newData.sort(function (a, b) {
+                return b[1] - a[1];
+            }).slice(0, 12),
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        },
+        {
+            name: 'Top 12',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            data: newData.sort(function (a, b) {
+                return b[1] - a[1];
+            }).slice(0, 12),
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        },
+        {
+            name: 'Top 12',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 3,
+            data: fuckData.sort(function (a, b) {
+                return b[1] - a[1];
+            }).slice(0, 12),
+            symbolSize: function (val) {
+                return val[1] / 500;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            itemStyle: {
+                normal: {
+                    color: '#f4e925',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        },
+        {
+            name: 'Top 12',
+            type: 'effectScatter',
+            coordinateSystem: 'calendar',
+            calendarIndex: 4,
+            data: fuckData.sort(function (a, b) {
                 return b[1] - a[1];
             }).slice(0, 12),
             symbolSize: function (val) {
@@ -365,14 +530,17 @@ myLove.setOption(
 // 异步加载数据
 $.get('./json/calendar.json').done(function (data) {
     myLove.hideLoading();
+    // 通过如下进行更改原先宽高大小，仅仅通过style.height 是不行的
+    myHight=(data.data.length)*250+'px';
+    myLove.resize({height:myHight});
     // 填入数据
-    // 这个字段还是要先被初始化 哪怕是空白也行
-    console.log(data.data.length);
+    // 这个字段还是要先被初始化 哪怕是空白
     // myLove.height = (data.data.length)*250+'px';
     // container.style.width = (data.data.length)*250+'px';
     container.style.height = (data.data.length)*250+'px';
     myLove.setOption({
-        calendar :data.data
+        calendar :data.data,
+
     });
 });
 

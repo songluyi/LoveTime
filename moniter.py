@@ -335,7 +335,7 @@ class moniter_platform(object):
         # 生成词云图
         wl = ",".join(tag_list)
         foot_path = file_path + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
-        save_path = file_path + '\\pic\\词云图.jpg'
+        save_path = file_path + '\\show\\pic\\词云图.jpg'
         # print(save_path)
         # 设置背景图片路径
         abel_mask = np.array(Image.open(file_path + '\\show\\ciyun\\background_image\\love .jpg'))
@@ -375,7 +375,8 @@ class moniter_platform(object):
             single_calendar = {}
             my_range=[time_list[count],time_list[count+1]]
             my_top=100+240*count
-            if str(6) in time_list[count]:
+            # 这里防止2016 进行干扰月份判定 所以选择[4:]
+            if str(6) in str(time_list[count])[4:]:
                 my_formatter='{start}'+' 下半年'
             else:
                 my_formatter = '{start}' + ' 上半年'

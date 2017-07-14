@@ -122,8 +122,8 @@ class moniter_platform(object):
             elif check_year in year_list:
                 back_dict[check_year].append(one_day)
         '''这个sort一下是为了方便后面calendar排序'''
-        year_list = sorted(year_list)
-        self.year_list = year_list
+        # year_list = sorted(year_list)
+        # self.year_list = year_list
         return back_dict
 
     def dict_tuple_2_json(self, dict_tuple):
@@ -221,9 +221,6 @@ class moniter_platform(object):
     def reply_rate(self, interval_time=None):
         reply_data = self.turn_tuplelist(self.get_field(2, interval_time), self.get_field(3, interval_time))
         # 第一次打招呼的人
-        # print(reply_data)
-        # first_strike_up=reply_data[0][0]
-        # self.first_strike_up=first_strike_up
         first_strike_up = self.get_first_strike()
         first_gap_list = []
         sec_gap_list = []
@@ -267,6 +264,7 @@ class moniter_platform(object):
         print(self.history_name)
         print(Fore.GREEN + '平均回复' + '【' + self.first_strike_up + '】' + '的时间是：' + str(first_avg_time))
         print(Fore.GREEN + '平均回复' + '【' + self.sec_strike_up + '】' + '的时间是：' + str(sec_avg_time))
+        self.year_list.append(time_axis)
         return [time_axis, first_strike_up, sec_avg_time]
 
     def get_time_gap(self):
@@ -442,28 +440,58 @@ class moniter_platform(object):
 
     def form_calendar_detail(self):
         # 该函数必须在visual_time方法后运行，在后续初始化函数中必须要进行先调用
-        count = 0
+        count = -1
         calendar_detail_list = []
-        first_half_year = {}
-        sec_half_year = {}
+
         for year in self.year_list:
-            this_year_data = self.day_dict[year]
+            first_half_year = {}
+            # 新增突出前十二名 的字典
+            shine_half_year = {}
+            this_year_data = self.day_dict[year[0:4]]
             first_half_year["name"] = '频次'
+            shine_half_year["name"] = 'Top 12'
             first_half_year["type"] = 'scatter'
+            shine_half_year["type"]= 'effectScatter'
             first_half_year["coordinateSystem"] = 'calendar'
+            shine_half_year["coordinateSystem"] = 'calendar'
             first_half_year["data"] = this_year_data
+            # print(this_year_data)
+            if len(this_year_data)>12:
+                shine_half_year["data"] = this_year_data[0:12]
+            else:
+                shine_half_year["data"]=[]
+            print(shine_half_year)
+            count+=1
             first_half_year["calendarIndex"] = count
-            first_half_year["symbolSize"] = "function (val) {return val[1] / 2;}"
+            shine_half_year["calendarIndex"] = count
+            # 这个func 我要用python 重写并输出为好
+            first_half_year["symbolSize"] = "function (val) {return val[1] / 50;}"
+            shine_half_year["symbolSize"] = "function (val) {return val[1] / 50;}"
+            # first_half_year["symbolSize"] = 20
             first_half_year["itemStyle"] = {
                 "normal": {
                     "color": '#ddb926'
                 }
             }
-            sec_half_year = first_half_year
-            sec_half_year["calendarIndex"] = count + 1
+            shine_half_year["showEffectOn"]='render'
+            shine_half_year[" rippleEffect"]={
+                "brushType": 'stroke'
+            }
+            shine_half_year["hoverAnimation"]=True
+            shine_half_year["itemStyle"]={
+                "normal": {
+                    "color": '#f4e925',
+                    "shadowBlur": 10,
+                    "shadowColor": '#333'
+                }
+            }
+            shine_half_year["zlevel"]=1
             calendar_detail_list.append(first_half_year)
-            calendar_detail_list.append(sec_half_year)
-
+            calendar_detail_list.append(shine_half_year)
+            # sec_half_year = dict(first_half_year) # 注意这里做copy 不是复制，应该算浅拷贝 有一个小坑
+            # count+=1
+            # sec_half_year["calendarIndex"] = count
+            # calendar_detail_list.append(sec_half_year)
 
         return calendar_detail_list
 

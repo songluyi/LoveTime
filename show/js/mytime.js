@@ -182,7 +182,9 @@ var container = document.getElementById('lovetime');
 // //设置容器高宽
 // resizeMyLove();
 // 基于准备好的dom，初始化echarts实例
-
+// console.log(data.sort(function (a, b) {
+//                 return b[1] - a[1];
+//             }).slice(0, 12));
 myLove.setOption(
     {
     backgroundColor: '#404a59',
@@ -526,22 +528,32 @@ myLove.setOption(
         }
     ]
 });
-
 // 异步加载数据
+
+var pines_size=function (val) {
+                return val[1] / 5;
+            };
+// console.log(pines_size);
 $.get('./json/calendar.json').done(function (data) {
     myLove.hideLoading();
     // 通过如下进行更改原先宽高大小，仅仅通过style.height 是不行的
     myHight=(data.data.length)*250+'px';
     myLove.resize({height:myHight});
+    console.log(data.calendar);
 
     // 填入数据
     // 这个字段还是要先被初始化 哪怕是空白
     // myLove.height = (data.data.length)*250+'px';
     // container.style.width = (data.data.length)*250+'px';
     container.style.height = (data.data.length)*250+'px';
+    for (var one=0,len=data.calendar.length; one<len; one++)
+    {
+    data.calendar[one]["symbolSize"]=pines_size;
+    console.log(data.calendar[one])
+    }
     myLove.setOption({
-        calendar :data.data
-        // series:data.calendar
+        calendar :data.data,
+        series:data.calendar
 
     });
 });

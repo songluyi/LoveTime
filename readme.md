@@ -1,3 +1,7 @@
+# LoveTime（恋爱的好时光）
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://fuckblog.org)
+[![PyPI](https://img.shields.io/pypi/wheel/Django.svg)](https://fuckblog.org)
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)]()
 ## 说明
 将QQ聊天记录（txt文件）放置到msg后运行moniter.py就可以直观的看到聊天的分析现在由于还未完成，如果你现在就像看到，那么可以这样先运行get2db然后运行moniter就好
 1.	聊天对象的信息（爬虫做的）
@@ -12,6 +16,7 @@
 2.	新增单元测试
 3. 将界面再优化一下 更漂亮一些 比如有一点恋爱的小粉色或者浮动动画
 4. 对这个pines_size 要可以伸缩 
+5. 对这个聊天回复速率要做一个时间轨迹折线图
 
 
 ## 使用流程

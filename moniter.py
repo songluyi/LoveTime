@@ -55,6 +55,7 @@ from get2db import get2db
 
 class moniter_platform(object):
     def __init__(self):
+        # 这个初始化变量还真是有点对 我把这个当做函数公共变量来使用了 不知道设计算不算合理 先用着吧
         self.db_result = self.get_db_reslt()
         self.first_strike_up = ''
         self.sec_strike_up = ''
@@ -64,6 +65,8 @@ class moniter_platform(object):
         self.time_gap = []
         self.sql = 'select * from msg'
         self.count_word = {}
+        self.year_list = []
+        self.day_dict = {}
 
     def get_db_reslt(self):
         sql = 'select * from msg'
@@ -93,28 +96,46 @@ class moniter_platform(object):
                 hour_result[index_hour] = middle_hour
             else:
                 hour_result[index_hour] = 1
-        day_list = sorted(self.dict2list(index_result), key=lambda x: x[1], reverse=True)
+        day_list = sorted(self.dict_2_real_list(index_result), key=lambda x: x[1], reverse=True)
+        self.day_dict = self.change_day_list(day_list)
         hour_list = sorted(self.dict2list(hour_result), key=lambda x: x[1], reverse=True)
-        new_day_list=self.dict_tuple_2_json(day_list)
+        new_day_list = self.dict_tuple_2_json(day_list)
         new_hour_list = self.dict_tuple_2_json(hour_list)
         # 新建转换
-        self.json2file(new_day_list,'day.json')
+        # self.json2file(new_day_list,'day.json')
         self.json2file(new_hour_list, 'hour.json')
         return [new_day_list, new_hour_list]
+
     '''
     该方法主要用于 将字典 转换为js 可以识别的 json txt
     但是 后续 还需要润色
     '''
-    def dict_tuple_2_json(self,dict_tuple):
-        back_dict={}
-        x_data=[]
-        y_data=[]
+
+    def change_day_list(self, day_list):
+        back_dict = dict()
+        year_list = []
+        for one_day in day_list:
+            check_year = one_day[0][0:4]
+            if check_year not in year_list:
+                year_list.append(check_year)
+                back_dict[check_year] = []
+            elif check_year in year_list:
+                back_dict[check_year].append(one_day)
+        '''这个sort一下是为了方便后面calendar排序'''
+        # year_list = sorted(year_list)
+        # self.year_list = year_list
+        return back_dict
+
+    def dict_tuple_2_json(self, dict_tuple):
+        back_dict = {}
+        x_data = []
+        y_data = []
         for i in dict_tuple:
             # 注意： 这里有可能前面字符串截取有问题
-            x_data.append(str(i[0]).replace(':',''))
+            x_data.append(str(i[0]).replace(':', ''))
             y_data.append(i[1])
-        back_dict['x_data']=x_data
-        back_dict['y_data']=y_data
+        back_dict['x_data'] = x_data
+        back_dict['y_data'] = y_data
         return back_dict
 
     def dict2list(self, dic):
@@ -122,6 +143,14 @@ class moniter_platform(object):
         keys = dic.keys()
         vals = dic.values()
         lst = [(key, val) for key, val in zip(keys, vals)]
+        return lst
+
+    # 这个函数是因为js 没有元组这个数据对象，需要用Python 提前做转换
+    def dict_2_real_list(self, dic):
+        ''' 将字典转化为列表 注意 内部也是list 不是元组 '''
+        keys = dic.keys()
+        vals = dic.values()
+        lst = [[key, val] for key, val in zip(keys, vals)]
         return lst
 
     def turn_tuplelist(self, dic1, dic2):
@@ -149,12 +178,6 @@ class moniter_platform(object):
             check_result = self.db_result
 
         # 如果db_result为空 就到数据区中取值 否则就用平时已经存储过的值
-        # if not self.db_result:
-        # db=get2db().connect_db()
-        # cursor = db.cursor()
-        # # all_sql='select * from msg'
-        # cursor.execute(all_sql)
-        # check_result = cursor.fetchall()
 
         for i in check_result:
             if not time_limit:
@@ -176,7 +199,7 @@ class moniter_platform(object):
         for i in time_data:
             count += 1
             if count == 1 and int(str(i)[5:7]) < 7:
-                print(int(str(i)[5:7]))
+                # print(int(str(i)[5:7]))
                 tail_flag = True
             if count == len(time_data) and int(str(i)[5:7]) > 5:
                 header_flag = True
@@ -198,9 +221,6 @@ class moniter_platform(object):
     def reply_rate(self, interval_time=None):
         reply_data = self.turn_tuplelist(self.get_field(2, interval_time), self.get_field(3, interval_time))
         # 第一次打招呼的人
-        # print(reply_data)
-        # first_strike_up=reply_data[0][0]
-        # self.first_strike_up=first_strike_up
         first_strike_up = self.get_first_strike()
         first_gap_list = []
         sec_gap_list = []
@@ -244,6 +264,7 @@ class moniter_platform(object):
         print(self.history_name)
         print(Fore.GREEN + '平均回复' + '【' + self.first_strike_up + '】' + '的时间是：' + str(first_avg_time))
         print(Fore.GREEN + '平均回复' + '【' + self.sec_strike_up + '】' + '的时间是：' + str(sec_avg_time))
+        self.year_list.append(time_axis)
         return [time_axis, first_strike_up, sec_avg_time]
 
     def get_time_gap(self):
@@ -253,14 +274,13 @@ class moniter_platform(object):
 
         for year in self.chat_his[:-2]:
             self.time_gap.append(str(year) + '-01-01')
-            self.time_gap.append(str(year) + '-06-01')
+            self.time_gap.append(str(year) + '-06-30')
         # 若存在最初日期大于六月份
         log(self.chat_his)
         if not self.chat_his[-2]:
             self.time_gap = self.time_gap[1:]
         if not self.chat_his[-1]:
             self.time_gap = self.time_gap[:-1]
-
         log('your time_gap %s' % self.time_gap)
         return self.time_gap
 
@@ -273,7 +293,19 @@ class moniter_platform(object):
         sec_ratio_reply = sec_frequency / first_frequency
         print(self.first_strike_up + "回复频率为 1: " + "%.2f" % first_ratio_reply)
         print(self.sec_strike_up + "回复频率为 1: " + "%.2f" % sec_ratio_reply)
-        return (first_frequency, 1 - first_frequency)
+        onedict = dict()
+        secdict = dict()
+        back_json = {}
+        first_name_fluency = self.first_strike_up + "回复频率"
+        sec_name_fluency = self.sec_strike_up + '回复频率'
+        onedict["name"] = first_name_fluency
+        onedict["value"] = first_ratio_reply * 100
+        secdict["name"] = sec_name_fluency
+        secdict["value"] = sec_ratio_reply * 100
+        back_json['x_data'] = [first_name_fluency, sec_name_fluency]
+        back_json['y_data'] = [onedict, secdict]
+        self.json2file(back_json, 'reply_ratio.json')
+        return back_json
 
     def get_content_ratio(self, time_gap=None):
         first_content_list = ''.join(self.get_field(1, time_gap, 'qq_user', self.first_strike_up))
@@ -284,6 +316,20 @@ class moniter_platform(object):
         sec_ratio_content = sec_content_length / first_content_length
         print(self.first_strike_up + "内容回复比率为 1: " + "%.2f" % first_ratio_content)
         print(self.sec_strike_up + "内容回复比率为 1: " + "%.2f" % sec_ratio_content)
+        # 这里重新初始化
+        onedict = dict()
+        secdict = dict()
+        back_json = {}
+        first_name_content = self.first_strike_up + "内容回复比率"
+        sec_name_content = self.sec_strike_up + '内容回复比率'
+        onedict["name"] = first_name_content
+        onedict["value"] = first_ratio_content * 100
+        secdict["name"] = sec_name_content
+        secdict["value"] = sec_ratio_content * 100
+        back_json['x_data'] = [first_name_content, sec_name_content]
+        back_json['y_data'] = [onedict, secdict]
+        self.json2file(back_json, 'content_ratio.json')
+        return back_json
 
     def jieba_count_word(self, time_gap=None):
         jieba.set_dictionary('foobar.txt')
@@ -316,13 +362,13 @@ class moniter_platform(object):
         # 生成词云图
         wl = ",".join(tag_list)
         foot_path = file_path + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
-        save_path = file_path + '\\pic\\词云图.jpg'
+        save_path = file_path + '\\show\\pic\\词云图.jpg'
         # print(save_path)
         # 设置背景图片路径
         abel_mask = np.array(Image.open(file_path + '\\show\\ciyun\\background_image\\love .jpg'))
 
         wc = WordCloud(background_color="black",  # 设置背景颜色
-                       mask = abel_mask,  #设置背景图片
+                       mask=abel_mask,  # 设置背景图片
                        max_words=200,  # 设置最大显示的字数
                        # stopwords = "", #设置停用词
                        # 这里注意兼容 linux 版本 以及font 字体
@@ -330,7 +376,7 @@ class moniter_platform(object):
                        # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
                        max_font_size=100,  # 设置字体最大值
                        random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
-                       scale=1.5   #设置保存的词云图尺寸大小
+                       scale=1.5  # 设置保存的词云图尺寸大小
                        )
 
         myword = wc.generate(wl)  # 生成词云
@@ -339,14 +385,115 @@ class moniter_platform(object):
         # 展示词云图
         plt.title("LoveTime")
         plt.imshow(myword)
-        plt.axis("off") # figure（显示窗口）默认是带axis（坐标尺）的，如果没有需要，我们可以关掉
+        plt.axis("off")  # figure（显示窗口）默认是带axis（坐标尺）的，如果没有需要，我们可以关掉
         plt.show()
 
-    def json2file(self,dict,filename):
-        file_path=os.getcwd()+'\\show\\json\\'+filename
-        f=open(file_path,'w')
-        f.write(str(dict).replace("'",'"'))
-        print(Fore.GREEN+'set up file success')
+    def json2file(self, dict, filename):
+        file_path = os.getcwd() + '\\show\\json\\' + filename
+        f = open(file_path, 'w', encoding='utf-8')
+        f.write(str(dict).replace("'", '"').replace('True', 'true'))
+        print(Fore.GREEN + 'Set up %s success' % filename)
+
+    def make_calendar_data(self, time_list=None):
+        time_list = self.time_gap
+        calendar_list = []
+
+        for count in range(len(time_list) - 1):
+            single_calendar = {}
+            my_range = [time_list[count], time_list[count + 1]]
+            my_top = 100 + 240 * count
+            # 这里防止2016 进行干扰月份判定 所以选择[4:]
+            if str(6) in str(time_list[count])[4:]:
+                my_formatter = '{start}' + ' 下半年'
+            else:
+                my_formatter = '{start}' + ' 上半年'
+            single_calendar["left"] = "center"
+            single_calendar["range"] = my_range
+            single_calendar["top"] = my_top
+            single_calendar["splitLine"] = {
+                "show": True,
+                "lineStyle": {
+                    "color": '#000',
+                    "width": 4,
+                    "type": 'solid'
+                }}
+            single_calendar["yearLabel"] = {
+                "formatter": my_formatter,
+                "textStyle": {
+                    "color": '#fff'
+                }
+            }
+            single_calendar["itemStyle"] = {
+                "normal": {
+                    "color": '#323c48',
+                    "borderWidth": 1,
+                    "borderColor": '#111'
+                }
+            }
+            calendar_list.append(single_calendar)
+        # print(calendar_list)
+        back_json = {"data": calendar_list}
+        my_year_data=self.form_calendar_detail()
+        back_json["calendar"]=my_year_data
+        self.json2file(back_json, 'calendar.json')
+        return calendar_list
+
+    def form_calendar_detail(self):
+        # 该函数必须在visual_time方法后运行，在后续初始化函数中必须要进行先调用
+        count = -1
+        calendar_detail_list = []
+
+        for year in self.year_list:
+            first_half_year = {}
+            # 新增突出前十二名 的字典
+            shine_half_year = {}
+            this_year_data = self.day_dict[year[0:4]]
+            first_half_year["name"] = '频次'
+            shine_half_year["name"] = 'Top 12'
+            first_half_year["type"] = 'scatter'
+            shine_half_year["type"]= 'effectScatter'
+            first_half_year["coordinateSystem"] = 'calendar'
+            shine_half_year["coordinateSystem"] = 'calendar'
+            first_half_year["data"] = this_year_data
+            # print(this_year_data)
+            if len(this_year_data)>12:
+                shine_half_year["data"] = this_year_data[0:12]
+            else:
+                shine_half_year["data"]=[]
+            print(shine_half_year)
+            count+=1
+            first_half_year["calendarIndex"] = count
+            shine_half_year["calendarIndex"] = count
+            # 这个func 我要用python 重写并输出为好
+            first_half_year["symbolSize"] = "function (val) {return val[1] / 50;}"
+            shine_half_year["symbolSize"] = "function (val) {return val[1] / 50;}"
+            # first_half_year["symbolSize"] = 20
+            first_half_year["itemStyle"] = {
+                "normal": {
+                    "color": '#ddb926'
+                }
+            }
+            shine_half_year["showEffectOn"]='render'
+            shine_half_year[" rippleEffect"]={
+                "brushType": 'stroke'
+            }
+            shine_half_year["hoverAnimation"]=True
+            shine_half_year["itemStyle"]={
+                "normal": {
+                    "color": '#f4e925',
+                    "shadowBlur": 10,
+                    "shadowColor": '#333'
+                }
+            }
+            shine_half_year["zlevel"]=1
+            calendar_detail_list.append(first_half_year)
+            calendar_detail_list.append(shine_half_year)
+            # sec_half_year = dict(first_half_year) # 注意这里做copy 不是复制，应该算浅拷贝 有一个小坑
+            # count+=1
+            # sec_half_year["calendarIndex"] = count
+            # calendar_detail_list.append(sec_half_year)
+
+        return calendar_detail_list
 
 
 # 这些复杂的函数 到时还是写一个unittest
@@ -363,18 +510,12 @@ if __name__ == "__main__":
         moniter.get_content_ratio(small_gap)
         moniter.jieba_count_word(small_gap)
         count += 1
-    print(sorted(moniter.dict2list(moniter.count_word), key=lambda x: x[1], reverse=True))
-    file_path = get2db().get_path()
-    content = ''.join(moniter.get_field(1))
-
-    # todo 长度是需要变化的
-
-    tags = jieba.analyse.extract_tags(content, 40)
-    print(",".join(tags))
-    # s=moniter.get_field(3,['2014-06-01', '2015-01-01'],'qq_user','名一')
-    # print(s)
-    moniter.make_tag_pic(tags)
-    # my_dict=moniter.visual_time()
-    # print(my_dict[1])
-    # moniter.json2file(my_dict[1],'hour.json')
-
+    # # todo 长度是需要变化的
+    # tags = jieba.analyse.extract_tags(content, 40)
+    # print(",".join(tags))
+    # moniter.make_tag_pic(tags)
+    my_dict = moniter.visual_time()
+    moniter.get_reply_fluency()
+    moniter.get_content_ratio()
+    moniter.make_calendar_data()
+    moniter.form_calendar_detail()

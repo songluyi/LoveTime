@@ -152,6 +152,7 @@ $.get('./json/content_ratio.json').done(function (data) {
         }]
     });
 });
+
 function getVirtulData(year) {
     year = year || '2017';
     var date = +echarts.number.parseDate(year + '-01-01');
@@ -528,11 +529,18 @@ myLove.setOption(
         }
     ]
 });
-// 异步加载数据
-
+// 这里就是默认的
 var pines_size=function (val) {
                 return val[1] / 5;
             };
+// 异步加载数据
+$.get('./json/little_pinnes.json').done(function (data) {
+        var your_size=parseInt(data.data)/30;
+        pines_size=function (val) {
+                return val[1] / your_size;
+            };
+});
+
 // console.log(pines_size);
 $.get('./json/calendar.json').done(function (data) {
     myLove.hideLoading();

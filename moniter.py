@@ -67,6 +67,7 @@ class moniter_platform(object):
         self.count_word = {}
         self.year_list = []
         self.day_dict = {}
+        self.row_day_dict={}
 
     def get_db_reslt(self):
         sql = 'select * from msg'
@@ -98,6 +99,7 @@ class moniter_platform(object):
                 hour_result[index_hour] = 1
         day_list = sorted(self.dict_2_real_list(index_result), key=lambda x: x[1], reverse=True)
         self.day_dict = self.change_day_list(day_list)
+        self.row_day_dict=day_list
         hour_list = sorted(self.dict2list(hour_result), key=lambda x: x[1], reverse=True)
         new_day_list = self.dict_tuple_2_json(day_list)
         new_hour_list = self.dict_tuple_2_json(hour_list)
@@ -488,13 +490,18 @@ class moniter_platform(object):
             shine_half_year["zlevel"]=1
             calendar_detail_list.append(first_half_year)
             calendar_detail_list.append(shine_half_year)
+        # print(self.row_day_dict)
+        self.fuck_pinnes()
             # sec_half_year = dict(first_half_year) # 注意这里做copy 不是复制，应该算浅拷贝 有一个小坑
             # count+=1
             # sec_half_year["calendarIndex"] = count
             # calendar_detail_list.append(sec_half_year)
 
         return calendar_detail_list
-
+    def fuck_pinnes(self):
+        your_pinnes_size=self.row_day_dict[0][1]
+        back_json={"data":your_pinnes_size}
+        self.json2file(back_json,'little_pinnes.json')
 
 # 这些复杂的函数 到时还是写一个unittest
 if __name__ == "__main__":

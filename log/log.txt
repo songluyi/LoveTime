@@ -3051,3 +3051,6 @@ DEBUG:jieba:Prefix dict has been built succesfully.
 INFO:root:select * from msg where qq_user='LSY
 '
 INFO:root:select * from msg where qq_user='ÃûÒ»'
+INFO:root:[False, False]
+INFO:root:[False, False]
+INFO:root:your time_gap []

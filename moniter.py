@@ -490,7 +490,6 @@ class moniter_platform(object):
             shine_half_year["zlevel"]=1
             calendar_detail_list.append(first_half_year)
             calendar_detail_list.append(shine_half_year)
-        # print(self.row_day_dict)
         self.fuck_pinnes()
             # sec_half_year = dict(first_half_year) # 注意这里做copy 不是复制，应该算浅拷贝 有一个小坑
             # count+=1

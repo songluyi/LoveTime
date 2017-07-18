@@ -3051,6 +3051,7 @@ DEBUG:jieba:Prefix dict has been built succesfully.
 INFO:root:select * from msg where qq_user='LSY
 '
 INFO:root:select * from msg where qq_user='名一'
+<<<<<<< HEAD
 INFO:root:['2014', '2015', '2016', '2017', False, True]
 INFO:root:['2014', '2015', '2016', '2017', False, True]
 INFO:root:your time_gap ['2014-06-30', '2015-01-01', '2015-06-30', '2016-01-01', '2016-06-30', '2017-01-01', '2017-06-30']
@@ -3184,3 +3185,8 @@ DEBUG:jieba:Loading model cost 0.000 seconds.
 DEBUG:jieba:Prefix dict has been built succesfully.
 INFO:root:select * from msg where qq_user='名一'
 INFO:root:select * from msg where qq_user='翟岚'
+=======
+INFO:root:[False, False]
+INFO:root:[False, False]
+INFO:root:your time_gap []
+>>>>>>> c49b4ecfa80d7db3f5de7d57841346f0cc7fa302

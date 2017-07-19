@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <title>恋爱的好时光</title>
     <!--引入 jq -->
     <script src="./js/jquery.min.js"></script>
     <!-- 引入 echarts.js -->
     <script src="./js/echarts.js"></script>
+    <!-- 引入 js data 画图数据 -->
+    <script src="./json/calendar.js"></script>
+    <script src="./json/content_ratio.js"></script>
+    <script src="./json/hour.js"></script>
+    <script src="./json/little_pinnes.js"></script>
+	<script src="./json/reply_ratio.js"></script>
+
+	<link href="css/styles.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
-    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="chat_hour" style="width: 600px;height:400px;margin:auto" ></div>
-    <div id="reply_ratio" style="width: 600px;height:400px;margin:auto"></div>
-    <div id="content_ratio" style="width: 600px;height:400px;margin:auto"></div>
+<!-- start header -->
+<div id="header">
+	<div id="logo">
+		<h1><a href="#">恋爱的好时光</a></h1>
+	    <h2><a href="#" id="metamorph">2017年7月19日20:10:32</a></h2>
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="active"><a href="#">Home</a></li>
+			<li><a href="https://github.com/songluyi/LoveTime">GitHub主页</a></li>
+		</ul>
+	</div>
+</div>
+
+<!--放置ECharts图片-->
+<!--为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="reply_time" style="width: 700px;height:400px;margin:auto"></div>
+    <div id="chat_hour" style="width: 700px;height:400px;margin:auto" ></div>
+    <div id="reply_ratio" style="width: 700px;height:400px;margin:auto"></div>
+    <div id="content_ratio" style="width: 700px;height:400px;margin:auto"></div>
     <div id="lovetime" style="width: 800px;height:800px;margin:auto"></div>
+
+<div id="footer">
+	<p>Copyright &copy; 2017. <a href="http://www.865171.cn">恋爱的好时光</a> | <a href="https://github.com/songluyi/LoveTime">GitHub</a></p>
+</div>
 
 </body>
     <!--引入自己写的js -->
-
     <script src="./js/mytime.js"></script>
 </html>

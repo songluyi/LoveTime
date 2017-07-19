@@ -41,7 +41,7 @@ from PIL import Image
 import jieba
 import logging
 import os
-
+import webbrowser # 用来自动打开浏览器页面嘿嘿
 LOG_FILENAME_NOTE = "./log/log.txt"
 logging.basicConfig(filename=LOG_FILENAME_NOTE, level=logging.INFO)
 
@@ -105,7 +105,7 @@ class moniter_platform(object):
         new_hour_list = self.dict_tuple_2_json(hour_list)
         # 新建转换
         # self.json2file(new_day_list,'day.json')
-        self.json2file(new_hour_list, 'hour.json')
+        self.json2file(new_hour_list, 'hour.js')
         return [new_day_list, new_hour_list]
 
     '''
@@ -306,7 +306,7 @@ class moniter_platform(object):
         secdict["value"] = sec_ratio_reply * 100
         back_json['x_data'] = [first_name_fluency, sec_name_fluency]
         back_json['y_data'] = [onedict, secdict]
-        self.json2file(back_json, 'reply_ratio.json')
+        self.json2file(back_json, 'reply_ratio.js')
         return back_json
 
     def get_content_ratio(self, time_gap=None):
@@ -330,7 +330,7 @@ class moniter_platform(object):
         secdict["value"] = sec_ratio_content * 100
         back_json['x_data'] = [first_name_content, sec_name_content]
         back_json['y_data'] = [onedict, secdict]
-        self.json2file(back_json, 'content_ratio.json')
+        self.json2file(back_json, 'content_ratio.js')
         return back_json
 
     def jieba_count_word(self, time_gap=None):
@@ -393,7 +393,10 @@ class moniter_platform(object):
     def json2file(self, dict, filename):
         file_path = os.getcwd() + '\\show\\json\\' + filename
         f = open(file_path, 'w', encoding='utf-8')
-        f.write(str(dict).replace("'", '"').replace('True', 'true'))
+        plus_str='var '+str(filename)[:-3]+'='
+        row_str=str(dict).replace("'", '"').replace('True', 'true')+';'
+        write_str=plus_str+row_str
+        f.write(write_str)
         print(Fore.GREEN + 'Set up %s success' % filename)
 
     def make_calendar_data(self, time_list=None):
@@ -437,7 +440,7 @@ class moniter_platform(object):
         back_json = {"data": calendar_list}
         my_year_data=self.form_calendar_detail()
         back_json["calendar"]=my_year_data
-        self.json2file(back_json, 'calendar.json')
+        self.json2file(back_json, 'calendar.js')
         return calendar_list
 
     def form_calendar_detail(self):
@@ -500,28 +503,48 @@ class moniter_platform(object):
     def fuck_pinnes(self):
         your_pinnes_size=self.row_day_dict[0][1]
         back_json={"data":your_pinnes_size}
-        self.json2file(back_json,'little_pinnes.json')
+        self.json2file(back_json,'little_pinnes.js')
+    def show_page(self):
+        html_path = os.getcwd() + '\\show\\showtime.html'
+        webbrowser.open(html_path)
 
+    def run(self):
+        count = 0
+        self.get_time_gap()
+        print(self.time_gap[:-1])
+        for gap in self.time_gap[:-1]:
+            print(self.time_gap[count + 1])
+            small_gap = [self.time_gap[count], self.time_gap[count + 1]]
+            self.reply_rate(small_gap)
+            self.get_reply_fluency(small_gap)
+            self.get_content_ratio(small_gap)
+            self.jieba_count_word(small_gap)
+            count += 1
+        my_dict = self.visual_time()
+        self.get_reply_fluency()
+        self.get_content_ratio()
+        self.make_calendar_data()
+        self.form_calendar_detail()
+        self.show_page()
 # 这些复杂的函数 到时还是写一个unittest
+'''这个启动太繁琐以后要做一个run 函数'''
 if __name__ == "__main__":
     moniter = moniter_platform()
-    count = 0
-    moniter.get_time_gap()
-    print(moniter.time_gap[:-1])
-    for gap in moniter.time_gap[:-1]:
-        print(moniter.time_gap[count + 1])
-        small_gap = [moniter.time_gap[count], moniter.time_gap[count + 1]]
-        moniter.reply_rate(small_gap)
-        moniter.get_reply_fluency(small_gap)
-        moniter.get_content_ratio(small_gap)
-        moniter.jieba_count_word(small_gap)
-        count += 1
-    # # todo 长度是需要变化的
-    # tags = jieba.analyse.extract_tags(content, 40)
-    # print(",".join(tags))
-    # moniter.make_tag_pic(tags)
-    my_dict = moniter.visual_time()
-    moniter.get_reply_fluency()
-    moniter.get_content_ratio()
-    moniter.make_calendar_data()
-    moniter.form_calendar_detail()
+    moniter.run()
+    # count = 0
+    # moniter.get_time_gap()
+    # print(moniter.time_gap[:-1])
+    # for gap in moniter.time_gap[:-1]:
+    #     print(moniter.time_gap[count + 1])
+    #     small_gap = [moniter.time_gap[count], moniter.time_gap[count + 1]]
+    #     moniter.reply_rate(small_gap)
+    #     moniter.get_reply_fluency(small_gap)
+    #     moniter.get_content_ratio(small_gap)
+    #     moniter.jieba_count_word(small_gap)
+    #     count += 1
+    # my_dict = moniter.visual_time()
+    # moniter.get_reply_fluency()
+    # moniter.get_content_ratio()
+    # moniter.make_calendar_data()
+    # moniter.form_calendar_detail()
+    # moniter.show_page()

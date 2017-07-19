@@ -1,6 +1,52 @@
 /**
  * Created by SLY on 2017/7/9.
  */
+var myTime = echarts.init(document.getElementById('reply_time'));
+myTime.setOption({
+        title: {
+        text: '聊天回复速率'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['你的回复速率','TA的回复速率']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'你的回复速率',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 390, 230, 210]
+        },
+        {
+            name:'TA的回复速率',
+            type:'line',
+            stack: '总量',
+            data:[110, 182, 191, 234, 290, 330, 310]
+        }
+
+    ]
+});
 var myChart = echarts.init(document.getElementById('chat_hour'));
 // 显示标题，图例和空的坐标轴
 myChart.setOption({
@@ -22,22 +68,23 @@ myChart.setOption({
     }]
 });
 
-// 异步加载数据
-$.get('./json/hour.json').done(function (data) {
-    myChart.hideLoading();
-    // 填入数据
-    // 这个字段还是要先被初始化 哪怕是空白也行
-    myChart.setOption({
-        xAxis: {
-        data: data.x_data
-        },
-        series: [{
-            // 根据名字对应到相应的系列
-            name: '次数',
-            data: data.y_data
-        }]
-    });
+// 因为浏览器安全问题弃用异步加载数据
+// $.get('./json/hour.json').done(function (data) {
+myChart.hideLoading();
+// 填入数据
+// 这个字段还是要先被初始化 哪怕是空白也行
+
+myChart.setOption({
+    xAxis: {
+    data: hour.x_data
+    },
+    series: [{
+        // 根据名字对应到相应的系列
+        name: '次数',
+        data: hour.y_data
+    }]
 });
+// });
 
 var myRatio = echarts.init(document.getElementById('reply_ratio'));
 // 显示标题，图例和空的坐标轴
@@ -80,21 +127,21 @@ myRatio.setOption(
 });
 
 // 异步加载数据
-$.get('./json/reply_ratio.json').done(function (data) {
-    myRatio.hideLoading();
-    // 填入数据
-    // 这个字段还是要先被初始化 哪怕是空白也行
-    myRatio.setOption({
-        legend :{
-            data:data.x_data
-        },
-        series: [{
-            // 根据名字对应到相应的系列
+// $.get('./json/reply_ratio.json').done(function (data) {
+myRatio.hideLoading();
+// 填入数据
+// 这个字段还是要先被初始化 哪怕是空白也行
+myRatio.setOption({
+    legend :{
+        data:reply_ratio.x_data
+    },
+    series: [{
+        // 根据名字对应到相应的系列
 
-            data: data.y_data
-        }]
-    });
+        data: reply_ratio.y_data
+    }]
 });
+// });
 
 var myContent = echarts.init(document.getElementById('content_ratio'));
 // 显示标题，图例和空的坐标轴
@@ -137,21 +184,21 @@ myContent.setOption(
 });
 
 // 异步加载数据
-$.get('./json/content_ratio.json').done(function (data) {
-    myContent.hideLoading();
-    // 填入数据
-    // 这个字段还是要先被初始化 哪怕是空白也行
-    myContent.setOption({
-        legend :{
-            data:data.x_data
-        },
-        series: [{
-            // 根据名字对应到相应的系列
+// $.get('./json/content_ratio.json').done(function (data) {
+myContent.hideLoading();
+// 填入数据
+// 这个字段还是要先被初始化 哪怕是空白也行
+myContent.setOption({
+    legend :{
+        data:content_ratio.x_data
+    },
+    series: [{
+        // 根据名字对应到相应的系列
 
-            data: data.y_data
-        }]
-    });
+        data: content_ratio.y_data
+    }]
 });
+// });
 
 function getVirtulData(year) {
     year = year || '2017';
@@ -534,35 +581,35 @@ var pines_size=function (val) {
                 return val[1] / 5;
             };
 // 异步加载数据
-$.get('./json/little_pinnes.json').done(function (data) {
-        var your_size=parseInt(data.data)/30;
-        pines_size=function (val) {
-                return val[1] / your_size;
-            };
-});
+// $.get('./json/little_pinnes.json').done(function (data) {
+var your_size=parseInt(little_pinnes.data)/30;
+pines_size=function (val) {
+        return val[1] / your_size;
+    };
+// });
 
 // console.log(pines_size);
-$.get('./json/calendar.json').done(function (data) {
-    myLove.hideLoading();
-    // 通过如下进行更改原先宽高大小，仅仅通过style.height 是不行的
-    myHight=(data.data.length)*250+'px';
-    myLove.resize({height:myHight});
-    console.log(data.calendar);
+// $.get('./json/calendar.json').done(function (data) {
+myLove.hideLoading();
+// 通过如下进行更改原先宽高大小，仅仅通过style.height 是不行的
+myHight=(calendar.data.length)*250+'px';
+myLove.resize({height:myHight});
+console.log(calendar.calendar);
 
-    // 填入数据
-    // 这个字段还是要先被初始化 哪怕是空白
-    // myLove.height = (data.data.length)*250+'px';
-    // container.style.width = (data.data.length)*250+'px';
-    container.style.height = (data.data.length)*250+'px';
-    for (var one=0,len=data.calendar.length; one<len; one++)
-    {
-    data.calendar[one]["symbolSize"]=pines_size;
-    console.log(data.calendar[one])
-    }
-    myLove.setOption({
-        calendar :data.data,
-        series:data.calendar
+// 填入数据
+// 这个字段还是要先被初始化 哪怕是空白
+// myLove.height = (data.data.length)*250+'px';
+// container.style.width = (data.data.length)*250+'px';
+container.style.height = (calendar.data.length)*250+'px';
+for (var one=0,len=calendar.calendar.length; one<len; one++)
+{
+calendar.calendar[one]["symbolSize"]=pines_size;
+console.log(calendar.calendar[one])
+}
+myLove.setOption({
+    calendar :calendar.data,
+    series:calendar.calendar
 
-    });
 });
+// });
 

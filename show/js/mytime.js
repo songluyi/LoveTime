@@ -3,14 +3,23 @@
  */
 var myTime = echarts.init(document.getElementById('reply_time'));
 myTime.setOption({
-        title: {
-        text: '聊天回复速率'
+    title: {
+        text: '聊天回复速率',
+        left: 'center'
     },
     tooltip: {
         trigger: 'axis'
+        // formatter: '{a} <br/>{b} : {c}'
     },
     legend: {
-        data:['你的回复速率','TA的回复速率']
+        left: 'left',
+        data: ['你的速率', 'TA的速率']
+    },
+    xAxis: {
+        type: 'category',
+        name: '日期',
+        splitLine: {show: false},
+        data: ['一', '二', '三', '四', '五', '六', '七', '八', '九']
     },
     grid: {
         left: '3%',
@@ -18,35 +27,24 @@ myTime.setOption({
         bottom: '3%',
         containLabel: true
     },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['周一','周二','周三','周四','周五','周六','周日']
-    },
     yAxis: {
-        type: 'value'
+        type: 'log',
+        name: '间隔分钟'
     },
     series: [
         {
-            name:'你的回复速率',
-            type:'line',
-            stack: '总量',
-            data:[120, 132, 101, 134, 390, 230, 210]
+            name: '你的速率',
+            type: 'line',
+            data: [83, 45, 9, 27, 81, 247, 333,57, 51]
         },
         {
-            name:'TA的回复速率',
-            type:'line',
-            stack: '总量',
-            data:[110, 182, 191, 234, 290, 330, 310]
+            name: 'TA的速率',
+            type: 'line',
+            data: [77, 8, 11, 8, 16, 32, 64, 128, 256]
         }
-
     ]
 });
+myTime.resize({width:'710px'});
 var myChart = echarts.init(document.getElementById('chat_hour'));
 // 显示标题，图例和空的坐标轴
 myChart.setOption({

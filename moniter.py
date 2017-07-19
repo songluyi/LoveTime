@@ -531,20 +531,20 @@ class moniter_platform(object):
 if __name__ == "__main__":
     moniter = moniter_platform()
     moniter.run()
-    # count = 0
-    # moniter.get_time_gap()
-    # print(moniter.time_gap[:-1])
-    # for gap in moniter.time_gap[:-1]:
-    #     print(moniter.time_gap[count + 1])
-    #     small_gap = [moniter.time_gap[count], moniter.time_gap[count + 1]]
-    #     moniter.reply_rate(small_gap)
-    #     moniter.get_reply_fluency(small_gap)
-    #     moniter.get_content_ratio(small_gap)
-    #     moniter.jieba_count_word(small_gap)
-    #     count += 1
-    # my_dict = moniter.visual_time()
-    # moniter.get_reply_fluency()
-    # moniter.get_content_ratio()
-    # moniter.make_calendar_data()
-    # moniter.form_calendar_detail()
-    # moniter.show_page()
+    count = 0
+    moniter.get_time_gap()
+    print(moniter.time_gap[:-1])
+    for gap in moniter.time_gap[:-1]:
+        print(moniter.time_gap[count + 1])
+        small_gap = [moniter.time_gap[count], moniter.time_gap[count + 1]]
+        moniter.reply_rate(small_gap)
+        moniter.get_reply_fluency(small_gap)
+        moniter.get_content_ratio(small_gap)
+        moniter.jieba_count_word(small_gap)
+        count += 1
+    my_dict = moniter.visual_time()
+    moniter.get_reply_fluency()
+    moniter.get_content_ratio()
+    moniter.make_calendar_data()
+    moniter.form_calendar_detail()
+    moniter.show_page()

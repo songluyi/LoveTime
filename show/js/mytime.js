@@ -19,11 +19,11 @@ myTime.setOption({
         type: 'category',
         name: '日期',
         splitLine: {show: false},
-        data: ['一', '二', '三', '四', '五', '六', '七', '八', '九']
+        data: ['2014上半年', '2014下半年', '2015上半年', '2014下半年', '2016上半年', '2016下半年', '2017上半年']
     },
     grid: {
         left: '3%',
-        right: '4%',
+        right: '10%',
         bottom: '3%',
         containLabel: true
     },

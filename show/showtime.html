@@ -23,7 +23,10 @@
 <div id="header">
 	<div id="logo">
 		<h1><a href="#">恋爱的好时光</a></h1>
-	    <h2><a href="#" id="metamorph">2017年7月19日20:10:32</a></h2>
+	    <h2><script>
+			var myDate = new Date();//获取系统当前时间
+			document.write(myDate)
+		</script></h2>
 	</div>
 	<div id="menu">
 		<ul>
@@ -33,6 +36,8 @@
 	</div>
 </div>
 
+<!--用来换行分割页面-->
+<hr> <br><br>
 <!--放置ECharts图片-->
 <!--为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="reply_time" style="width: 700px;height:400px;margin:auto"></div>
@@ -42,7 +47,7 @@
     <div id="lovetime" style="width: 800px;height:800px;margin:auto"></div>
 
 <div id="footer">
-	<p>Copyright &copy; 2017. <a href="http://www.fuckblog.org">恋爱的好时光</a> | <a href="https://github.com/songluyi/LoveTime">GitHub</a></p>
+	<p>Copyright &copy; 2017. <a href="#">恋爱的好时光</a> | <a href="https://github.com/songluyi/LoveTime">GitHub</a></p>
 </div>
 
 </body>

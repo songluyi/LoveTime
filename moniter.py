@@ -42,6 +42,7 @@ import jieba
 import logging
 import os
 import webbrowser # 用来自动打开浏览器页面嘿嘿
+from get2db import db_run
 LOG_FILENAME_NOTE = "./log/log.txt"
 logging.basicConfig(filename=LOG_FILENAME_NOTE, level=logging.INFO)
 
@@ -68,6 +69,8 @@ class moniter_platform(object):
         self.year_list = []
         self.day_dict = {}
         self.row_day_dict={}
+        self.boy_rate_list=[]
+        self.girl_rate_list=[]
 
     def get_db_reslt(self):
         sql = 'select * from msg'
@@ -267,7 +270,16 @@ class moniter_platform(object):
         print(Fore.GREEN + '平均回复' + '【' + self.first_strike_up + '】' + '的时间是：' + str(first_avg_time))
         print(Fore.GREEN + '平均回复' + '【' + self.sec_strike_up + '】' + '的时间是：' + str(sec_avg_time))
         self.year_list.append(time_axis)
-        return [time_axis, first_strike_up, sec_avg_time]
+        self.boy_rate_list.append(self.change_datetime_formate(first_avg_time))
+        self.girl_rate_list.append(self.change_datetime_formate(sec_avg_time))
+        # print([time_axis, self.change_datetime_formate(first_avg_time), self.change_datetime_formate(sec_avg_time)])
+        return [time_axis, self.change_datetime_formate(first_avg_time), self.change_datetime_formate(sec_avg_time)]
+
+    def change_datetime_formate(self,row_datetime):
+        middle_data=str(row_datetime).split(':')
+        sum_min=int(middle_data[0])*60+int(middle_data[1])
+        return sum_min
+
 
     def get_time_gap(self):
         if not self.chat_his:
@@ -442,7 +454,19 @@ class moniter_platform(object):
         back_json["calendar"]=my_year_data
         self.json2file(back_json, 'calendar.js')
         return calendar_list
+    def form_reply_rate_json(self):
+        back_json={}
+        # 针对不满半年的情况 需要对月份进行划分
+        if len(self.year_list)<3:
+            plus_mounth=0
+            if self.year_list[1][0:4]-self.year_list[0][0:4]>0:
+                plus_mounth=12
+            finnal_mouth=int(self.year_list[1][5:7])-int(self.year_list[1][5:7])
 
+        back_json['x_data']=self.year_list
+        back_json['boy']=self.boy_rate_list
+        back_json['girl']=self.girl_rate_list
+        self.json2file(back_json,'reply_fluency.js')
     def form_calendar_detail(self):
         # 该函数必须在visual_time方法后运行，在后续初始化函数中必须要进行先调用
         count = -1
@@ -508,7 +532,11 @@ class moniter_platform(object):
         html_path = os.getcwd() + '\\show\\showtime.html'
         webbrowser.open(html_path)
 
+    def get_reply_rate(self):
+        return
+
     def run(self):
+        db_run()
         count = 0
         self.get_time_gap()
         print(self.time_gap[:-1])
@@ -525,26 +553,11 @@ class moniter_platform(object):
         self.get_content_ratio()
         self.make_calendar_data()
         self.form_calendar_detail()
+        self.form_reply_rate_json()
         self.show_page()
 # 这些复杂的函数 到时还是写一个unittest
 '''这个启动太繁琐以后要做一个run 函数'''
 if __name__ == "__main__":
     moniter = moniter_platform()
     moniter.run()
-    count = 0
-    moniter.get_time_gap()
-    print(moniter.time_gap[:-1])
-    for gap in moniter.time_gap[:-1]:
-        print(moniter.time_gap[count + 1])
-        small_gap = [moniter.time_gap[count], moniter.time_gap[count + 1]]
-        moniter.reply_rate(small_gap)
-        moniter.get_reply_fluency(small_gap)
-        moniter.get_content_ratio(small_gap)
-        moniter.jieba_count_word(small_gap)
-        count += 1
-    my_dict = moniter.visual_time()
-    moniter.get_reply_fluency()
-    moniter.get_content_ratio()
-    moniter.make_calendar_data()
-    moniter.form_calendar_detail()
-    moniter.show_page()
+

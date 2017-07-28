@@ -28,6 +28,7 @@ import re
 # 改为sqllite3
 import logging
 from errors import FileError
+import os
 
 logging.basicConfig(level=logging.INFO)
 
@@ -55,7 +56,7 @@ class get2db(object):
         return conn
 
     def get_path(self):
-        import os
+
         current_path = os.getcwd()
         new_path = current_path + '\\' + 'msg' + '\\'
         FileList = []
@@ -157,10 +158,11 @@ class get2db(object):
             cursor.executemany(insert_sql, data)
         db.commit()
 
-# 这个之后再归类到一起 现在还有很多希望修改的
-if __name__ == "__main__":
-
+def db_run():
+    db_name=os.getcwd()+'\\store.db'
+    os.remove(db_name)
     msg = get2db()
     my_path = msg.get_path()
     my_content = msg.get_content(my_path)
     msg.insert_db(my_content)
+

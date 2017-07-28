@@ -19,7 +19,7 @@ myTime.setOption({
         type: 'category',
         name: '日期',
         splitLine: {show: false},
-        data: ['2014上半年', '2014下半年', '2015上半年', '2014下半年', '2016上半年', '2016下半年', '2017上半年']
+        data: reply_fluency.x_data
     },
     grid: {
         left: '3%',
@@ -35,12 +35,12 @@ myTime.setOption({
         {
             name: '你的速率',
             type: 'line',
-            data: [83, 45, 9, 27, 81, 247, 333,57, 51]
+            data: reply_fluency.boy
         },
         {
             name: 'TA的速率',
             type: 'line',
-            data: [77, 8, 11, 8, 16, 32, 64, 128, 256]
+            data: reply_fluency.girl
         }
     ]
 });

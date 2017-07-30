@@ -29,6 +29,14 @@ import re
 import logging
 from errors import FileError
 import os
+import jieba
+
+from jieba import analyse
+# 效率的事情稍 后来转么进行实现 特别是规范化的问题
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import numpy as np
+from PIL import Image
 
 logging.basicConfig(level=logging.INFO)
 
@@ -39,7 +47,7 @@ class get2db(object):
         # 这个我想通过爬虫来判断QQ的男女 这个样通过emgon的外部库
         self.boy_name = '一只特立独行的猪'
         self.girl_name = '一颗被拱了的白菜'
-        return
+        self.file_list=[]
 
     def connect_db(self):
         # 没发现这个用dict 可以传递现在用函数传递游标也行吧
@@ -72,7 +80,9 @@ class get2db(object):
         if not FileList:
             print(rootdir, ':  txt file was not found please check.')
             raise FileError
+        self.file_list=FileList
         return FileList
+
 
     # 目前就支持单文本导入即可，多了累赘
     def check_format(self, path_dict):
@@ -158,11 +168,15 @@ class get2db(object):
             cursor.executemany(insert_sql, data)
         db.commit()
 
+
 def db_run():
     db_name=os.getcwd()+'\\store.db'
+    cache_path=os.getcwd()+'\\__pycache__'
+    # 导入db 速率较快，因此先删除旧有的，不要判断新旧
     os.remove(db_name)
     msg = get2db()
     my_path = msg.get_path()
     my_content = msg.get_content(my_path)
     msg.insert_db(my_content)
+
 

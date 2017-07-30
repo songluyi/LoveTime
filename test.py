@@ -70,5 +70,6 @@ code is far away from bugs with the god Animal protecting
 # # 关闭数据库连接
 #
 # db.close()
-print(int('04'))
+a='123456789'
+print(','.join(a))
 

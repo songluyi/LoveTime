@@ -31,18 +31,18 @@ code is far away from bugs with the god Animal protecting
 from colorama import init, Fore, Back, Style
 from collections import Counter
 import datetime
-from jieba import analyse
-# 效率的事情稍 后来转么进行实现 特别是规范化的问题
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-import numpy as np
-from PIL import Image
 # 生成词云图
 import jieba
 import logging
 import os
 import webbrowser # 用来自动打开浏览器页面嘿嘿
 from get2db import db_run
+from jieba import analyse
+# 效率的事情稍 后来转么进行实现 特别是规范化的问题
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+import numpy as np
+from PIL import Image
 LOG_FILENAME_NOTE = "./log/log.txt"
 logging.basicConfig(filename=LOG_FILENAME_NOTE, level=logging.INFO)
 
@@ -313,9 +313,9 @@ class moniter_platform(object):
         first_name_fluency = self.first_strike_up + "回复频率"
         sec_name_fluency = self.sec_strike_up + '回复频率'
         onedict["name"] = first_name_fluency
-        onedict["value"] = first_ratio_reply * 100
+        onedict["value"] = int(first_ratio_reply * 100)
         secdict["name"] = sec_name_fluency
-        secdict["value"] = sec_ratio_reply * 100
+        secdict["value"] = int(sec_ratio_reply * 100)
         back_json['x_data'] = [first_name_fluency, sec_name_fluency]
         back_json['y_data'] = [onedict, secdict]
         self.json2file(back_json, 'reply_ratio.js')
@@ -337,9 +337,9 @@ class moniter_platform(object):
         first_name_content = self.first_strike_up + "内容回复比率"
         sec_name_content = self.sec_strike_up + '内容回复比率'
         onedict["name"] = first_name_content
-        onedict["value"] = first_ratio_content * 100
+        onedict["value"] = int(first_ratio_content * 100)
         secdict["name"] = sec_name_content
-        secdict["value"] = sec_ratio_content * 100
+        secdict["value"] = int(sec_ratio_content * 100)
         back_json['x_data'] = [first_name_content, sec_name_content]
         back_json['y_data'] = [onedict, secdict]
         self.json2file(back_json, 'content_ratio.js')
@@ -366,41 +366,8 @@ class moniter_platform(object):
 
                     # print(count_gap_word)
         jieba_count = sorted(self.dict2list(count_gap_word), key=lambda x: x[1], reverse=True)
-        # print(jieba_count)
         return jieba_count
 
-    def make_tag_pic(self, tag_list):
-        # 获取工作路径
-        file_path = os.getcwd()
-
-        # 生成词云图
-        wl = ",".join(tag_list)
-        foot_path = file_path + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
-        save_path = file_path + '\\show\\pic\\ciyun.jpg'
-        # print(save_path)
-        # 设置背景图片路径
-        abel_mask = np.array(Image.open(file_path + '\\show\\ciyun\\background_image\\love .jpg'))
-
-        wc = WordCloud(background_color="black",  # 设置背景颜色
-                       mask=abel_mask,  # 设置背景图片
-                       max_words=200,  # 设置最大显示的字数
-                       # stopwords = "", #设置停用词
-                       # 这里注意兼容 linux 版本 以及font 字体
-                       font_path=foot_path,
-                       # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
-                       max_font_size=100,  # 设置字体最大值
-                       random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
-                       scale=1.5  # 设置保存的词云图尺寸大小
-                       )
-
-        myword = wc.generate(wl)  # 生成词云
-        # 这里将图片存放到pic 文件夹里面
-        wc.to_file(save_path)
-        # 展示词云图
-        plt.title("LoveTime")
-        plt.imshow(myword)
-        plt.axis("off")  # figure（显示窗口）默认是带axis（坐标尺）的，如果没有需要，我们可以关掉
-        plt.show()
 
     def json2file(self, dict, filename):
         file_path = os.getcwd() + '\\show\\json\\' + filename
@@ -531,10 +498,39 @@ class moniter_platform(object):
     def show_page(self):
         html_path = os.getcwd() + '\\show\\showtime.html'
         webbrowser.open(html_path)
+    def make_tag_pic(self):
+        # 获取工作路径
+        content = ''.join(self.get_field(num=1))
+        tag_list=jieba.analyse.extract_tags(content)
+        file_path = os.getcwd()
+        print(tag_list)
+        # 生成词云图
+        wl = ",".join(tag_list)
+        foot_path = file_path + '\\show\\font\\造字工房尚黑G0v1常规体.otf'
+        save_path = file_path + '\\show\\pic\\ciyun.jpg'
+        # print(save_path)
+        # 设置背景图片路径
+        abel_mask = np.array(Image.open(file_path + '\\show\\ciyun\\background_image\\love .jpg'))
 
-    def get_reply_rate(self):
-        return
+        wc = WordCloud(background_color="black",  # 设置背景颜色
+                       mask=abel_mask,  # 设置背景图片
+                       max_words=200,  # 设置最大显示的字数
+                       # stopwords = "", #设置停用词
+                       # 这里注意兼容 linux 版本 以及font 字体
+                       font_path=foot_path,
+                       # 设置中文字体，使得词云可以显示（词云默认字体是“DroidSansMono.ttf字体库”，不支持中文）
+                       max_font_size=100,  # 设置字体最大值
+                       random_state=30,  # 设置有多少种随机生成状态，即有多少种配色方案
+                       scale=1.5  # 设置保存的词云图尺寸大小
+                       )
 
+        myword = wc.generate(wl)  # 生成词云
+        # 这里将图片存放到pic 文件夹里面
+        wc.to_file(save_path)
+        # 展示词云图
+        plt.title("LoveTime")
+        plt.imshow(myword)
+        plt.axis("off")  # figure（显示窗口）默认是带axis（坐标尺）的，如果没有需要，我们可以关掉
     def run(self):
         db_run()
         count = 0
@@ -554,6 +550,7 @@ class moniter_platform(object):
         self.make_calendar_data()
         self.form_calendar_detail()
         self.form_reply_rate_json()
+        self.make_tag_pic()
         self.show_page()
 # 这些复杂的函数 到时还是写一个unittest
 '''这个启动太繁琐以后要做一个run 函数'''

@@ -1,21 +1,24 @@
 
 body {
+	background-size:100% 100%;
 	width:100%;
-	height: 506px;
+	height: 524px;
 	margin: 0;
 	padding: 0;
-	font-size: 20px;
 	color: #7F7F7F;
+	background:  no-repeat center;
 }
 
 
 /* Header */
 
 #header {
+	background-size:100% 100%; /*设置图片随浏览器窗口大小而变化*/
 	width: 90%;
 	height: 100%;
 	margin: 0px auto;
-	background: url(images/header.jpg) no-repeat center;
+	background: url(images/header.jpg) no-repeat;
+	background-repeat: round;
 }
 
 /* Logo */
@@ -24,20 +27,20 @@ body {
 	float: left;
 	padding: 40px 0 0 0;
     position:absolute;
-    left:250px;
-    top:20px;
+    left:5%;
+    top:0%;
 }
 
 #logo h1 {
 	text-transform: lowercase;
-	font-size: 40px;
+	font-size: 4vw;	 /*设置字体随浏览器窗口大小而变化 4vw 是 4% */
 	font-weight: normal;
 	font-family: "楷体";
 }
 
 #logo h2 {
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 0.8em;
 	font-family:"微软雅黑";
 }
 
@@ -51,8 +54,8 @@ body {
 #menu {
 	float: right;
 	position:absolute;
-    right:320px;
-    top:120px;
+    right:10%;
+    top:19%;
 }
 
 #menu ul {
@@ -71,7 +74,7 @@ body {
 	margin-left: 20px;
 	text-decoration: none;
 	text-transform: lowercase;
-	font-size: 1.36em;
+	font-size: 3vw;
 	color: #333333;
 }
 
@@ -93,7 +96,7 @@ body {
 #footer p {
 	margin: 0px;
 	padding: 0px;
-	font-size: 24px;
+	font-size: 2vw;
 	text-align: center;
 	color: #717171;
 }

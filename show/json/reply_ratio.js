@@ -1,1 +1,1 @@
-var reply_ratio={"y_data": [{"name": " LSY\n回复频率", "value": 59}, {"name": "名一回复频率", "value": 168}], "x_data": [" LSY\n回复频率", "名一回复频率"]};
+var reply_ratio={"x_data": ["名一回复频率", " LSY\n回复频率"], "y_data": [{"value": 105, "name": "名一回复频率"}, {"value": 94, "name": " LSY\n回复频率"}]};

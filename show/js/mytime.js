@@ -49,11 +49,13 @@ var myChart = echarts.init(document.getElementById('chat_hour'));
 // 显示标题，图例和空的坐标轴
 myChart.setOption({
     title: {
-        text: '最爱聊天的时段'
+        text: '最爱聊天的时段',
+        left: 'center'
     },
     tooltip: {},
     legend: {
-        data:['次数']
+        data:['次数'],
+        left: 'left'
     },
     xAxis: {
         data:  []
@@ -236,7 +238,7 @@ myLove.setOption(
     backgroundColor: '#404a59',
     title: {
         top: 30,
-        text: '2016年聊天日历图',
+        text: '聊天日历图',
         subtext: '你开心就好',
         left: 'center',
         textStyle: {

@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<link rel="shortcut icon" href="./pic/favicon.ico" />
     <title>恋爱的好时光</title>
     <!--引入 jq -->
     <script src="./js/jquery.min.js"></script>
@@ -14,41 +15,46 @@
     <script src="./json/little_pinnes.js"></script>
 	<script src="./json/reply_ratio.js"></script>
     <script src="./json/reply_fluency.js"></script>
+    <script src="./js/clicklove.js"></script>
 
-	<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	<!--<link href="css/styles.css" rel="stylesheet" type="text/css" />-->
 
 </head>
 <body>
 <!-- start header -->
-<div id="header">
-	<div id="logo">
-		<h1><a href="#">恋爱的好时光</a></h1>
-	    <h2><script>
-			var myDate = new Date();//获取系统当前时间
-			document.write(myDate)
-		</script></h2>
-	</div>
-	<div id="menu">
-		<ul>
-			<li class="active"><a href="#">Home</a></li>
-			<li><a href="https://github.com/songluyi/LoveTime">GitHub主页</a></li>
-		</ul>
-	</div>
-</div>
+<!--<div id="header">-->
+	<!--<div id="logo">-->
+		<!--&lt;!&ndash;<h1><a href="#">恋爱的好时光</a></h1>&ndash;&gt;-->
+	    <!--<h2><script>-->
+			<!--var myDate = new Date();//获取系统当前时间-->
+			<!--document.write(myDate)-->
+		<!--</script></h2>-->
+	<!--</div>-->
+	<!--<div id="menu">-->
+		<!--<ul>-->
+			<!--<li class="active"><a href="#">Home</a></li>-->
+			<!--<li><a href="https://github.com/songluyi/LoveTime">GitHub主页</a></li>-->
+		<!--</ul>-->
+	<!--</div>-->
+<!--</div>-->
 
-<!--用来换行分割页面-->
-<hr> <br><br>
+<!--&lt;!&ndash;用来换行分割页面&ndash;&gt;-->
+<!--<hr> <br><br>-->
 <!--放置ECharts图片-->
 <!--为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="reply_time" style="width: 700px;height:400px;margin:auto"></div>
     <div id="chat_hour" style="width: 700px;height:400px;margin:auto" ></div>
     <div id="reply_ratio" style="width: 700px;height:400px;margin:auto"></div>
     <div id="content_ratio" style="width: 700px;height:400px;margin:auto"></div>
+    <!--这-->
+    <h3 style="text-align:center">词云图</h3>
+    <img src="./pic/ciyun.jpg"  alt="词云图"  style="width: 700px;height:400px;position:relative;left:23%"  />
     <div id="lovetime" style="width: 800px;height:800px;margin:auto"></div>
 
-<div id="footer">
-	<p>Copyright &copy; 2017. <a href="#">恋爱的好时光</a> | <a href="https://github.com/songluyi/LoveTime">GitHub</a></p>
-</div>
+
+<!--<div id="footer">-->
+	<!--<p>Copyright &copy; 2017. <a href="#">恋爱的好时光</a> | <a href="https://github.com/songluyi/LoveTime">GitHub</a></p>-->
+<!--</div>-->
 
 </body>
     <!--引入自己写的js -->

@@ -7,8 +7,12 @@
 # For English speakers
 This small tool is using for analyzing message of QQ as you want to know your 
 friend and  u chat fluency ,chat rely ratio, favorite chat time,chat reply rate
- and daily number of chats. Author doesn't have fucking time
-wasting on English version. If u want to use, be better to learn Chinese.
+and daily number of chats. 
+
+Author doesn't have fucking time wasting on English version.
+
+If u want to use, be better to learn Chinese.
+
 Otherwise please click your top right close button and open new window of Pomegranate.
 
 # 效果展示
@@ -17,11 +21,11 @@ Otherwise please click your top right close button and open new window of Pomegr
 # 使用方法
 1. 第一步 从github 上下载
 
-`git clone https://github.com/songluyi/LoveTime.git`
+   `git clone https://github.com/songluyi/LoveTime.git`
 
 2. 安装依赖库
 
-`pip install -r requirements.txt`
+    `pip install -r requirements.txt`
 
 3. 将QQ 聊天记录导出并放置到msg 文件夹下面
 
@@ -30,6 +34,7 @@ Otherwise please click your top right close button and open new window of Pomegr
 导出QQ消息记录：http://jingyan.baidu.com/article/a501d80c33919fec630f5e82.html
 
 **只能放置一个么**
+
 是的
 
 4. 运行moniter.py

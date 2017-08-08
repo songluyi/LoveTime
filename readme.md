@@ -1,4 +1,4 @@
-# ![](https://github.com/songluyi/LoveTime/blob/master/show/pic/lovetime%20.png)LoveTime
+# LoveTime
 #### **恋爱的好时光**
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://fuckblog.org)
 [![PyPI](https://img.shields.io/pypi/wheel/Django.svg)](https://fuckblog.org)

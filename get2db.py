@@ -24,6 +24,7 @@ code is far away from bugs with the god Animal protecting
 -------------------------------------------------------------------------------
 """
 from colorama import init, Fore, Back, Style
+init()
 import re
 # 改为sqllite3
 import logging
@@ -31,12 +32,6 @@ from errors import FileError
 import os
 import jieba
 
-from jieba import analyse
-# 效率的事情稍 后来转么进行实现 特别是规范化的问题
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-import numpy as np
-from PIL import Image
 
 logging.basicConfig(level=logging.INFO)
 

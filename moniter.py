@@ -29,6 +29,7 @@ code is far away from bugs with the god Animal protecting
 这方面需要加强
 '''
 from colorama import init, Fore, Back, Style
+init()# 别忘记初始化
 from collections import Counter
 import datetime
 # 生成词云图
@@ -358,6 +359,7 @@ class moniter_platform(object):
         back_json['y_data'] = [onedict, secdict]
         self.json2file(back_json, 'content_ratio.js')
         return back_json
+
     # 我发现用jieba 切分词不如他写的 分离tag 方法好用
     def jieba_count_word(self, time_gap=None):
         jieba.set_dictionary('foobar.txt')
@@ -451,7 +453,7 @@ class moniter_platform(object):
                 if int(middle_mounth) < 10:
                     middle_mounth = '0' + middle_mounth
                 later_mounth = str(self._last_time[0:5]) + middle_mounth + self._last_time[7:10]
-                print(later_mounth)
+
                 new_gap.append(later_mounth)
             count = 0
             for gap in new_gap[:-1]:
@@ -481,7 +483,7 @@ class moniter_platform(object):
             first_half_year["coordinateSystem"] = 'calendar'
             shine_half_year["coordinateSystem"] = 'calendar'
             first_half_year["data"] = this_year_data
-            # print(this_year_data)
+
             if len(this_year_data) > 12:
                 shine_half_year["data"] = this_year_data[0:12]
             else:

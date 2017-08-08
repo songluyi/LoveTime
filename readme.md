@@ -29,13 +29,13 @@ Otherwise please click your top right close button and open new window of Pomegr
 
 3. 将QQ 聊天记录导出并放置到msg 文件夹下面
 
-**如何导出？**
+    **如何导出？**
 
-导出QQ消息记录：http://jingyan.baidu.com/article/a501d80c33919fec630f5e82.html
+    导出QQ消息记录：http://jingyan.baidu.com/article/a501d80c33919fec630f5e82.html
 
-**只能放置一个么**
+    **只能放置一个么**
 
-是的
+    是的
 
 4. 运行moniter.py
 

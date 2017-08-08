@@ -39,7 +39,7 @@ Otherwise please click your top right close button and open new window of Pomegr
 
 4. 运行moniter.py
 
-`python moniter.py`
+`   python moniter.py`
 
 ## TO DO
 1.	新增单元测试

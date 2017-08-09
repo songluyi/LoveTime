@@ -49,15 +49,18 @@ Otherwise please click your top right close button and open new window of Pomegr
 
 
 # 使用方法
-1. 第一步 从github 上下载
+1. 首先从github上下载项目
 
    `git clone https://github.com/songluyi/LoveTime.git`
+   
+2. 然后进入项目目录
+   `cd LoveTime`
 
-2. 安装依赖库
+3. 再安装依赖库
 
     `pip install -r requirements.txt`
 
-3. 将QQ 聊天记录导出并放置到msg 文件夹下面
+4. 将QQ 聊天记录导出并放置到msg 文件夹下面
 
     **如何导出？**
 
@@ -67,7 +70,7 @@ Otherwise please click your top right close button and open new window of Pomegr
 
     是的
 
-4. 运行moniter.py
+5. 运行moniter.py
 
    ` python moniter.py`
 

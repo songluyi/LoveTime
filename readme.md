@@ -54,6 +54,7 @@ Otherwise please click your top right close button and open new window of Pomegr
    `git clone https://github.com/songluyi/LoveTime.git`
    
 2. 然后进入项目目录
+
    `cd LoveTime`
 
 3. 再安装依赖库

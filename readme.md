@@ -1,8 +1,8 @@
 # LoveTime
 #### **恋爱的好时光**
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://fuckblog.org)
-[![PyPI](https://img.shields.io/pypi/wheel/Django.svg)](https://fuckblog.org)
-[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)]()
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/songluyi/LoveTime)
+[![PyPI](https://img.shields.io/pypi/wheel/Django.svg)](https://github.com/songluyi/LoveTime)
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/songluyi/LoveTime)
 
 # For English speakers
 This small tool is using for analyzing message of QQ as you want to know your 
@@ -16,6 +16,36 @@ If u want to use, be better to learn Chinese.
 Otherwise please click your top right close button and open new window of Pomegranate.
 
 # 效果展示
+**1. 每半年（或每月）聊天回复速率**
+
+      即：你发出消息后多少分钟后得到回复
+
+**2. 一天中和TA 最爱聊天的时段**
+
+**3. 在一段时间内聊天次数比率**
+
+      即：你发出消息总次数/TA 发出消息总和次数
+
+**4. 在一段时间内聊天内容长度比率**
+
+      即：你发出消息总和长度/TA 发出消息总和长度
+
+**5. 统计总时段内每天聊天总次数**
+
+**6. 统计总时段内聊天标签和词频**
+
+如图：
+![](http://www.songluyi.com/wp-content/uploads/2017/08/恋爱的好时光.png)
+
+
+# 升级版
+1. 提供 【情感变化曲线】 录入的功能 和 【特别事件】 录入的功能.（特别事件指：约会吃饭交往俯卧撑等）
+
+2. 对【特别事件】 情感因子 进行先期定义.
+
+3. 提供 【情感变化曲线】 与 主要因变量【特别事件】 【聊天回复速率】【聊天次数比率】
+【聊天内容长度比率】【每天聊天总次数】和【聊天标签和词频】时间面板数据之间的线性回归关系，进行建模。
+最终将会提供线上交流和线下交流对情感Y影响比率，同时提供多重共线性判别结果.
 
 
 # 使用方法
@@ -39,7 +69,7 @@ Otherwise please click your top right close button and open new window of Pomegr
 
 4. 运行moniter.py
 
-`   python moniter.py`
+   ` python moniter.py`
 
 ## TO DO
 1.	新增单元测试

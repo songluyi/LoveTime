@@ -29,7 +29,7 @@ code is far away from bugs with the god Animal protecting
 这方面需要加强
 '''
 from colorama import init, Fore, Back, Style
-init()# 别忘记初始化
+init()# colorama初始化
 from collections import Counter
 import datetime
 # 生成词云图

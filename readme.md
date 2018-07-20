@@ -13,7 +13,7 @@ Author doesn't have fucking time wasting on English version.
 
 If u want to use, be better to learn Chinese.
 
-Otherwise please click your top right close button and open new window of Pomegranate.
+Otherwise please click your top right close button.
 
 # 效果展示
 **1. 每半年（或每月）聊天回复速率**

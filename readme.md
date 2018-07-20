@@ -9,11 +9,7 @@ This small tool is using for analyzing message of QQ as you want to know your
 friend and  u chat fluency ,chat rely ratio, favorite chat time,chat reply rate
 and daily number of chats. 
 
-Author doesn't have fucking time wasting on English version.
 
-If u want to use, be better to learn Chinese.
-
-Otherwise please click your top right close button.
 
 # 效果展示
 **1. 每半年（或每月）聊天回复速率**
